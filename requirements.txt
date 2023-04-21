@@ -1,0 +1,4 @@
+openapi2jsonschema
+pre-commit
+PyYAML!=6.0.0,!=5.4.0,!=5.4.1 # https://github.com/yaml/pyyaml/issues/724
+wheel

@@ -1,0 +1,8 @@
+[allowlist]
+  description = "Global Allowlist"
+
+  # Ignore based on any subset of the file path
+  regexes = [
+    # Ignore Bearer Token
+    '''sha256~kV46hPnEYhCWFnB85r5NrprAxggzgb6GOeLbgcKNsH0''',
+  ]

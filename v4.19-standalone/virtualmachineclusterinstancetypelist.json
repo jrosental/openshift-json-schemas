@@ -1,0 +1,464 @@
+{
+  "description": "VirtualMachineClusterInstancetypeList is a list of VirtualMachineClusterInstancetype",
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "items": {
+      "description": "List of virtualmachineclusterinstancetypes. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+      "type": "array",
+      "items": {
+        "description": "VirtualMachineClusterInstancetype is a cluster scoped version of VirtualMachineInstancetype resource.",
+        "type": "object",
+        "required": [
+          "spec"
+        ],
+        "properties": {
+          "apiVersion": {
+            "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+            "type": "string"
+          },
+          "kind": {
+            "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+            "type": "string"
+          },
+          "metadata": {
+            "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+            "type": "object",
+            "properties": {
+              "annotations": {
+                "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "creationTimestamp": {
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "deletionGracePeriodSeconds": {
+                "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
+                "type": "integer",
+                "format": "int64"
+              },
+              "deletionTimestamp": {
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "finalizers": {
+                "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "x-kubernetes-list-type": "set",
+                "x-kubernetes-patch-strategy": "merge"
+              },
+              "generateName": {
+                "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will return a 409.\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
+                "type": "string"
+              },
+              "generation": {
+                "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
+                "type": "integer",
+                "format": "int64"
+              },
+              "labels": {
+                "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "managedFields": {
+                "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
+                "type": "array",
+                "items": {
+                  "description": "ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.",
+                  "type": "object",
+                  "properties": {
+                    "apiVersion": {
+                      "description": "APIVersion defines the version of this resource that this field set applies to. The format is \"group/version\" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.",
+                      "type": "string"
+                    },
+                    "fieldsType": {
+                      "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+                      "type": "string"
+                    },
+                    "fieldsV1": {
+                      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+                      "type": "object"
+                    },
+                    "manager": {
+                      "description": "Manager is an identifier of the workflow managing these fields.",
+                      "type": "string"
+                    },
+                    "operation": {
+                      "description": "Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'.",
+                      "type": "string"
+                    },
+                    "subresource": {
+                      "description": "Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.",
+                      "type": "string"
+                    },
+                    "time": {
+                      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                },
+                "x-kubernetes-list-type": "atomic"
+              },
+              "name": {
+                "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+                "type": "string"
+              },
+              "namespace": {
+                "description": "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces",
+                "type": "string"
+              },
+              "ownerReferences": {
+                "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
+                "type": "array",
+                "items": {
+                  "description": "OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.",
+                  "type": "object",
+                  "required": [
+                    "apiVersion",
+                    "kind",
+                    "name",
+                    "uid"
+                  ],
+                  "properties": {
+                    "apiVersion": {
+                      "description": "API version of the referent.",
+                      "type": "string"
+                    },
+                    "blockOwnerDeletion": {
+                      "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
+                      "type": "boolean"
+                    },
+                    "controller": {
+                      "description": "If true, this reference points to the managing controller.",
+                      "type": "boolean"
+                    },
+                    "kind": {
+                      "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+                      "type": "string"
+                    },
+                    "uid": {
+                      "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+                      "type": "string"
+                    }
+                  },
+                  "x-kubernetes-map-type": "atomic"
+                },
+                "x-kubernetes-list-map-keys": [
+                  "uid"
+                ],
+                "x-kubernetes-list-type": "map",
+                "x-kubernetes-patch-merge-key": "uid",
+                "x-kubernetes-patch-strategy": "merge"
+              },
+              "resourceVersion": {
+                "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+                "type": "string"
+              },
+              "selfLink": {
+                "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+                "type": "string"
+              },
+              "uid": {
+                "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+                "type": "string"
+              }
+            }
+          },
+          "spec": {
+            "description": "Required spec describing the instancetype",
+            "type": "object",
+            "required": [
+              "cpu",
+              "memory"
+            ],
+            "properties": {
+              "annotations": {
+                "description": "Optionally defines the required Annotations to be used by the instance type and applied to the VirtualMachineInstance",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "cpu": {
+                "description": "Required CPU related attributes of the instancetype.",
+                "type": "object",
+                "required": [
+                  "guest"
+                ],
+                "properties": {
+                  "dedicatedCPUPlacement": {
+                    "description": "DedicatedCPUPlacement requests the scheduler to place the VirtualMachineInstance on a node\nwith enough dedicated pCPUs and pin the vCPUs to it.",
+                    "type": "boolean"
+                  },
+                  "guest": {
+                    "description": "Required number of vCPUs to expose to the guest.\n\nThe resulting CPU topology being derived from the optional PreferredCPUTopology attribute of CPUPreferences that itself defaults to PreferSockets.",
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "isolateEmulatorThread": {
+                    "description": "IsolateEmulatorThread requests one more dedicated pCPU to be allocated for the VMI to place\nthe emulator thread on it.",
+                    "type": "boolean"
+                  },
+                  "maxSockets": {
+                    "description": "MaxSockets specifies the maximum amount of sockets that can be hotplugged",
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "model": {
+                    "description": "Model specifies the CPU model inside the VMI.\nList of available models https://github.com/libvirt/libvirt/tree/master/src/cpu_map.\nIt is possible to specify special cases like \"host-passthrough\" to get the same CPU as the node\nand \"host-model\" to get CPU closest to the node one.\nDefaults to host-model.",
+                    "type": "string"
+                  },
+                  "numa": {
+                    "description": "NUMA allows specifying settings for the guest NUMA topology",
+                    "type": "object",
+                    "properties": {
+                      "guestMappingPassthrough": {
+                        "description": "GuestMappingPassthrough will create an efficient guest topology based on host CPUs exclusively assigned to a pod.\nThe created topology ensures that memory and CPUs on the virtual numa nodes never cross boundaries of host numa nodes.",
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "realtime": {
+                    "description": "Realtime instructs the virt-launcher to tune the VMI for lower latency, optional for real time workloads",
+                    "type": "object",
+                    "properties": {
+                      "mask": {
+                        "description": "Mask defines the vcpu mask expression that defines which vcpus are used for realtime. Format matches libvirt's expressions.\nExample: \"0-3,^1\",\"0,2,3\",\"2-3\"",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "gpus": {
+                "description": "Optionally defines any GPU devices associated with the instancetype.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "deviceName",
+                    "name"
+                  ],
+                  "properties": {
+                    "deviceName": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the GPU device as exposed by a device plugin",
+                      "type": "string"
+                    },
+                    "tag": {
+                      "description": "If specified, the virtual network interface address and its tag will be provided to the guest via config drive",
+                      "type": "string"
+                    },
+                    "virtualGPUOptions": {
+                      "type": "object",
+                      "properties": {
+                        "display": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "description": "Enabled determines if a display addapter backed by a vGPU should be enabled or disabled on the guest.\nDefaults to true.",
+                              "type": "boolean"
+                            },
+                            "ramFB": {
+                              "description": "Enables a boot framebuffer, until the guest OS loads a real GPU driver\nDefaults to true.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "description": "Enabled determines if the feature should be enabled or disabled on the guest.\nDefaults to true.",
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "x-kubernetes-list-type": "atomic"
+              },
+              "hostDevices": {
+                "description": "Optionally defines any HostDevices associated with the instancetype.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "deviceName",
+                    "name"
+                  ],
+                  "properties": {
+                    "deviceName": {
+                      "description": "DeviceName is the resource name of the host device exposed by a device plugin",
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "description": "If specified, the virtual network interface address and its tag will be provided to the guest via config drive",
+                      "type": "string"
+                    }
+                  }
+                },
+                "x-kubernetes-list-type": "atomic"
+              },
+              "ioThreadsPolicy": {
+                "description": "Optionally defines the IOThreadsPolicy to be used by the instancetype.",
+                "type": "string"
+              },
+              "launchSecurity": {
+                "description": "Optionally defines the LaunchSecurity to be used by the instancetype.",
+                "type": "object",
+                "properties": {
+                  "sev": {
+                    "description": "AMD Secure Encrypted Virtualization (SEV).",
+                    "type": "object",
+                    "properties": {
+                      "attestation": {
+                        "description": "If specified, run the attestation process for a vmi.",
+                        "type": "object"
+                      },
+                      "dhCert": {
+                        "description": "Base64 encoded guest owner's Diffie-Hellman key.",
+                        "type": "string"
+                      },
+                      "policy": {
+                        "description": "Guest policy flags as defined in AMD SEV API specification.\nNote: due to security reasons it is not allowed to enable guest debugging. Therefore NoDebug flag is not exposed to users and is always true.",
+                        "type": "object",
+                        "properties": {
+                          "encryptedState": {
+                            "description": "SEV-ES is required.\nDefaults to false.",
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "session": {
+                        "description": "Base64 encoded session blob.",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "memory": {
+                "description": "Required Memory related attributes of the instancetype.",
+                "type": "object",
+                "required": [
+                  "guest"
+                ],
+                "properties": {
+                  "guest": {
+                    "description": "Required amount of memory which is visible inside the guest OS.",
+                    "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                    "x-kubernetes-int-or-string": true
+                  },
+                  "hugepages": {
+                    "description": "Optionally enables the use of hugepages for the VirtualMachineInstance instead of regular memory.",
+                    "type": "object",
+                    "properties": {
+                      "pageSize": {
+                        "description": "PageSize specifies the hugepage size, for x86_64 architecture valid values are 1Gi and 2Mi.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "maxGuest": {
+                    "description": "MaxGuest allows to specify the maximum amount of memory which is visible inside the Guest OS.\nThe delta between MaxGuest and Guest is the amount of memory that can be hot(un)plugged.",
+                    "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                    "x-kubernetes-int-or-string": true
+                  },
+                  "overcommitPercent": {
+                    "description": "OvercommitPercent is the percentage of the guest memory which will be overcommitted.\nThis means that the VMIs parent pod (virt-launcher) will request less\nphysical memory by a factor specified by the OvercommitPercent.\nOvercommits can lead to memory exhaustion, which in turn can lead to crashes. Use carefully.\nDefaults to 0",
+                    "type": "integer",
+                    "maximum": 100,
+                    "minimum": 0
+                  }
+                }
+              },
+              "nodeSelector": {
+                "description": "NodeSelector is a selector which must be true for the vmi to fit on a node.\nSelector which must match a node's labels for the vmi to be scheduled on that node.\nMore info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/\n\nNodeSelector is the name of the custom node selector for the instancetype.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "schedulerName": {
+                "description": "If specified, the VMI will be dispatched by specified scheduler.\nIf not specified, the VMI will be dispatched by default scheduler.\n\nSchedulerName is the name of the custom K8s scheduler for the instancetype.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-kubernetes-group-version-kind": [
+          {
+            "group": "instancetype.kubevirt.io",
+            "kind": "VirtualMachineClusterInstancetype",
+            "version": "v1beta1"
+          }
+        ],
+        "x-kubernetes-selectable-fields": []
+      }
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
+      "type": "object",
+      "properties": {
+        "continue": {
+          "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
+          "type": "string"
+        },
+        "remainingItemCount": {
+          "description": "remainingItemCount is the number of subsequent items in the list which are not included in this list response. If the list request contained label or field selectors, then the number of remaining items is unknown and the field will be left unset and omitted during serialization. If the list is complete (either because it is not chunking or because this is the last chunk), then there are no more remaining items and this field will be left unset and omitted during serialization. Servers older than v1.15 do not set this field. The intended use of the remainingItemCount is *estimating* the size of a collection. Clients should not rely on the remainingItemCount to be set or to be exact.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "resourceVersion": {
+          "description": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+          "type": "string"
+        },
+        "selfLink": {
+          "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "instancetype.kubevirt.io",
+      "kind": "VirtualMachineClusterInstancetypeList",
+      "version": "v1beta1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "$schema": "http://json-schema.org/schema#"
+}

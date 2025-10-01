@@ -1,0 +1,2531 @@
+{
+  "description": "Build is the Schema for the builds API.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+      "type": "object",
+      "properties": {
+        "annotations": {
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "creationTimestamp": {
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "deletionGracePeriodSeconds": {
+          "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "deletionTimestamp": {
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "finalizers": {
+          "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-kubernetes-list-type": "set",
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "generateName": {
+          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will return a 409.\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
+          "type": "string"
+        },
+        "generation": {
+          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "labels": {
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "managedFields": {
+          "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
+          "type": "array",
+          "items": {
+            "description": "ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.",
+            "type": "object",
+            "properties": {
+              "apiVersion": {
+                "description": "APIVersion defines the version of this resource that this field set applies to. The format is \"group/version\" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.",
+                "type": "string"
+              },
+              "fieldsType": {
+                "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+                "type": "string"
+              },
+              "fieldsV1": {
+                "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+                "type": "object"
+              },
+              "manager": {
+                "description": "Manager is an identifier of the workflow managing these fields.",
+                "type": "string"
+              },
+              "operation": {
+                "description": "Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'.",
+                "type": "string"
+              },
+              "subresource": {
+                "description": "Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.",
+                "type": "string"
+              },
+              "time": {
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          },
+          "x-kubernetes-list-type": "atomic"
+        },
+        "name": {
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces",
+          "type": "string"
+        },
+        "ownerReferences": {
+          "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
+          "type": "array",
+          "items": {
+            "description": "OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.",
+            "type": "object",
+            "required": [
+              "apiVersion",
+              "kind",
+              "name",
+              "uid"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "API version of the referent.",
+                "type": "string"
+              },
+              "blockOwnerDeletion": {
+                "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
+                "type": "boolean"
+              },
+              "controller": {
+                "description": "If true, this reference points to the managing controller.",
+                "type": "boolean"
+              },
+              "kind": {
+                "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                "type": "string"
+              },
+              "name": {
+                "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+                "type": "string"
+              },
+              "uid": {
+                "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+                "type": "string"
+              }
+            },
+            "x-kubernetes-map-type": "atomic"
+          },
+          "x-kubernetes-list-map-keys": [
+            "uid"
+          ],
+          "x-kubernetes-list-type": "map",
+          "x-kubernetes-patch-merge-key": "uid",
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "resourceVersion": {
+          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+          "type": "string"
+        },
+        "selfLink": {
+          "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+          "type": "string"
+        },
+        "uid": {
+          "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+          "type": "string"
+        }
+      }
+    },
+    "spec": {
+      "description": "BuildSpec defines the list of tasks to be execute for a Build. From Camel K version 2, it would be more appropriate\nto think it as pipeline.",
+      "type": "object",
+      "properties": {
+        "configuration": {
+          "description": "The configuration that should be used to perform the Build.\nDeprecated: no longer in use in Camel K 2 - maintained for backward compatibility",
+          "type": "object",
+          "properties": {
+            "annotations": {
+              "description": "Annotation to use for the builder pod. Only used for `pod` strategy",
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "limitCPU": {
+              "description": "The maximum amount of CPU required. Only used for `pod` strategy",
+              "type": "string"
+            },
+            "limitMemory": {
+              "description": "The maximum amount of memory required. Only used for `pod` strategy",
+              "type": "string"
+            },
+            "nodeSelector": {
+              "description": "The node selector for the builder pod. Only used for `pod` strategy",
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "operatorNamespace": {
+              "description": "The namespace where to run the builder Pod (must be the same of the operator in charge of this Build reconciliation).",
+              "type": "string"
+            },
+            "orderStrategy": {
+              "description": "the build order strategy to adopt",
+              "type": "string",
+              "enum": [
+                "dependencies",
+                "fifo",
+                "sequential"
+              ]
+            },
+            "platforms": {
+              "description": "The list of platforms used in order to build a container image.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "requestCPU": {
+              "description": "The minimum amount of CPU required. Only used for `pod` strategy",
+              "type": "string"
+            },
+            "requestMemory": {
+              "description": "The minimum amount of memory required. Only used for `pod` strategy",
+              "type": "string"
+            },
+            "strategy": {
+              "description": "the strategy to adopt",
+              "type": "string",
+              "enum": [
+                "routine",
+                "pod"
+              ]
+            },
+            "toolImage": {
+              "description": "The container image to be used to run the build.",
+              "type": "string"
+            }
+          }
+        },
+        "maxRunningBuilds": {
+          "description": "the maximum amount of parallel running builds started by this operator instance\nDeprecated: no longer in use in Camel K 2 - maintained for backward compatibility",
+          "type": "integer",
+          "format": "int32"
+        },
+        "operatorNamespace": {
+          "description": "The namespace where to run the builder Pod (must be the same of the operator in charge of this Build reconciliation).\nDeprecated: no longer in use in Camel K 2 - maintained for backward compatibility",
+          "type": "string"
+        },
+        "tasks": {
+          "description": "The sequence of tasks (pipeline) to be performed.",
+          "type": "array",
+          "items": {
+            "description": "Task represents the abstract task. Only one of the task should be configured to represent the specific task chosen.",
+            "type": "object",
+            "properties": {
+              "buildah": {
+                "description": "a BuildahTask, for Buildah strategy\nDeprecated: use jib or a custom publishing strategy instead",
+                "type": "object",
+                "properties": {
+                  "baseImage": {
+                    "description": "base image layer",
+                    "type": "string"
+                  },
+                  "configuration": {
+                    "description": "The configuration that should be used to perform the Build.",
+                    "type": "object",
+                    "properties": {
+                      "annotations": {
+                        "description": "Annotation to use for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "limitCPU": {
+                        "description": "The maximum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "limitMemory": {
+                        "description": "The maximum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "nodeSelector": {
+                        "description": "The node selector for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "operatorNamespace": {
+                        "description": "The namespace where to run the builder Pod (must be the same of the operator in charge of this Build reconciliation).",
+                        "type": "string"
+                      },
+                      "orderStrategy": {
+                        "description": "the build order strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "dependencies",
+                          "fifo",
+                          "sequential"
+                        ]
+                      },
+                      "platforms": {
+                        "description": "The list of platforms used in order to build a container image.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "requestCPU": {
+                        "description": "The minimum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "requestMemory": {
+                        "description": "The minimum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "strategy": {
+                        "description": "the strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "routine",
+                          "pod"
+                        ]
+                      },
+                      "toolImage": {
+                        "description": "The container image to be used to run the build.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "contextDir": {
+                    "description": "can be useful to share info with other tasks",
+                    "type": "string"
+                  },
+                  "executorImage": {
+                    "description": "docker image to use",
+                    "type": "string"
+                  },
+                  "image": {
+                    "description": "final image name",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "name of the task",
+                    "type": "string"
+                  },
+                  "platform": {
+                    "description": "The platform of build image",
+                    "type": "string"
+                  },
+                  "registry": {
+                    "description": "where to publish the final image",
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "description": "the URI to access",
+                        "type": "string"
+                      },
+                      "ca": {
+                        "description": "the configmap which stores the Certificate Authority",
+                        "type": "string"
+                      },
+                      "insecure": {
+                        "description": "if the container registry is insecure (ie, http only)",
+                        "type": "boolean"
+                      },
+                      "organization": {
+                        "description": "the registry organization",
+                        "type": "string"
+                      },
+                      "secret": {
+                        "description": "the secret where credentials are stored",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "verbose": {
+                    "description": "log more information",
+                    "type": "boolean"
+                  }
+                }
+              },
+              "builder": {
+                "description": "a BuilderTask, used to generate and build the project",
+                "type": "object",
+                "properties": {
+                  "baseImage": {
+                    "description": "the base image layer",
+                    "type": "string"
+                  },
+                  "buildDir": {
+                    "description": "workspace directory to use",
+                    "type": "string"
+                  },
+                  "configuration": {
+                    "description": "The configuration that should be used to perform the Build.",
+                    "type": "object",
+                    "properties": {
+                      "annotations": {
+                        "description": "Annotation to use for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "limitCPU": {
+                        "description": "The maximum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "limitMemory": {
+                        "description": "The maximum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "nodeSelector": {
+                        "description": "The node selector for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "operatorNamespace": {
+                        "description": "The namespace where to run the builder Pod (must be the same of the operator in charge of this Build reconciliation).",
+                        "type": "string"
+                      },
+                      "orderStrategy": {
+                        "description": "the build order strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "dependencies",
+                          "fifo",
+                          "sequential"
+                        ]
+                      },
+                      "platforms": {
+                        "description": "The list of platforms used in order to build a container image.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "requestCPU": {
+                        "description": "The minimum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "requestMemory": {
+                        "description": "The minimum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "strategy": {
+                        "description": "the strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "routine",
+                          "pod"
+                        ]
+                      },
+                      "toolImage": {
+                        "description": "The container image to be used to run the build.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "dependencies": {
+                    "description": "the list of dependencies to use for this build",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "git": {
+                    "description": "the configuration of the project to build on Git",
+                    "type": "object",
+                    "properties": {
+                      "branch": {
+                        "description": "the git branch to check out",
+                        "type": "string"
+                      },
+                      "commit": {
+                        "description": "the git commit (full SHA) to check out",
+                        "type": "string"
+                      },
+                      "secret": {
+                        "description": "the Kubernetes secret where token is stored",
+                        "type": "string"
+                      },
+                      "tag": {
+                        "description": "the git tag to check out",
+                        "type": "string"
+                      },
+                      "url": {
+                        "description": "the URL of the project",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "maven": {
+                    "description": "the configuration required by Maven for the application build phase",
+                    "type": "object",
+                    "properties": {
+                      "caSecrets": {
+                        "description": "The Secrets name and key, containing the CA certificate(s) used to connect\nto remote Maven repositories.\nIt can contain X.509 certificates, and PKCS#7 formatted certificate chains.\nA JKS formatted keystore is automatically created to store the CA certificate(s),\nand configured to be used as a trusted certificate(s) by the Maven commands.\nNote that the root CA certificates are also imported into the created keystore.",
+                        "type": "array",
+                        "items": {
+                          "description": "SecretKeySelector selects a key of a Secret.",
+                          "type": "object",
+                          "required": [
+                            "key"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The key of the secret to select from.  Must be a valid secret key.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                              "type": "string"
+                            },
+                            "optional": {
+                              "description": "Specify whether the Secret or its key must be defined",
+                              "type": "boolean"
+                            }
+                          },
+                          "x-kubernetes-map-type": "atomic"
+                        }
+                      },
+                      "cliOptions": {
+                        "description": "The CLI options that are appended to the list of arguments for Maven commands,\ne.g., `-V,--no-transfer-progress,-Dstyle.color=never`.\nSee https://maven.apache.org/ref/3.8.4/maven-embedder/cli.html.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "extension": {
+                        "description": "The Maven build extensions.\nSee https://maven.apache.org/guides/mini/guide-using-extensions.html.",
+                        "type": "array",
+                        "items": {
+                          "description": "MavenArtifact defines a GAV (Group:Artifact:Type:Version:Classifier) Maven artifact.",
+                          "type": "object",
+                          "required": [
+                            "artifactId",
+                            "groupId"
+                          ],
+                          "properties": {
+                            "artifactId": {
+                              "description": "Maven Artifact",
+                              "type": "string"
+                            },
+                            "classifier": {
+                              "description": "Maven Classifier",
+                              "type": "string"
+                            },
+                            "groupId": {
+                              "description": "Maven Group",
+                              "type": "string"
+                            },
+                            "type": {
+                              "description": "Maven Type",
+                              "type": "string"
+                            },
+                            "version": {
+                              "description": "Maven Version",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "localRepository": {
+                        "description": "The path of the local Maven repository.",
+                        "type": "string"
+                      },
+                      "profiles": {
+                        "description": "A reference to the ConfigMap or Secret key that contains\nthe Maven profile.",
+                        "type": "array",
+                        "items": {
+                          "description": "ValueSource --.",
+                          "type": "object",
+                          "properties": {
+                            "configMapKeyRef": {
+                              "description": "Selects a key of a ConfigMap.",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key to select.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                  "type": "string"
+                                },
+                                "optional": {
+                                  "description": "Specify whether the ConfigMap or its key must be defined",
+                                  "type": "boolean"
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic"
+                            },
+                            "secretKeyRef": {
+                              "description": "Selects a key of a secret.",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                  "type": "string"
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": "boolean"
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic"
+                            }
+                          }
+                        }
+                      },
+                      "properties": {
+                        "description": "The Maven properties.",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "repositories": {
+                        "description": "additional repositories",
+                        "type": "array",
+                        "items": {
+                          "description": "Repository defines a Maven repository.",
+                          "type": "object",
+                          "required": [
+                            "id",
+                            "url"
+                          ],
+                          "properties": {
+                            "id": {
+                              "description": "identifies the repository",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "name of the repository",
+                              "type": "string"
+                            },
+                            "releases": {
+                              "description": "can use stable releases",
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "checksumPolicy": {
+                                  "description": "When Maven deploys files to the repository, it also deploys corresponding checksum files.\nYour options are to `ignore`, `fail`, or `warn` on missing or incorrect checksums.",
+                                  "type": "string"
+                                },
+                                "enabled": {
+                                  "description": "is the policy activated or not",
+                                  "type": "boolean"
+                                },
+                                "updatePolicy": {
+                                  "description": "This element specifies how often updates should attempt to occur.\nMaven will compare the local POM's timestamp (stored in a repository's maven-metadata file) to the remote.\nThe choices are: `always`, `daily` (default), `interval:X` (where X is an integer in minutes) or `never`",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "snapshots": {
+                              "description": "can use snapshot",
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "checksumPolicy": {
+                                  "description": "When Maven deploys files to the repository, it also deploys corresponding checksum files.\nYour options are to `ignore`, `fail`, or `warn` on missing or incorrect checksums.",
+                                  "type": "string"
+                                },
+                                "enabled": {
+                                  "description": "is the policy activated or not",
+                                  "type": "boolean"
+                                },
+                                "updatePolicy": {
+                                  "description": "This element specifies how often updates should attempt to occur.\nMaven will compare the local POM's timestamp (stored in a repository's maven-metadata file) to the remote.\nThe choices are: `always`, `daily` (default), `interval:X` (where X is an integer in minutes) or `never`",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "url": {
+                              "description": "location of the repository",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "servers": {
+                        "description": "Servers (auth)",
+                        "type": "array",
+                        "items": {
+                          "description": "Server see link:https://maven.apache.org/settings.html[Maven settings].",
+                          "type": "object",
+                          "properties": {
+                            "configuration": {
+                              "description": "Properties -- .",
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "password": {
+                              "type": "string"
+                            },
+                            "username": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "settings": {
+                        "description": "A reference to the ConfigMap or Secret key that contains\nthe Maven settings.",
+                        "type": "object",
+                        "properties": {
+                          "configMapKeyRef": {
+                            "description": "Selects a key of a ConfigMap.",
+                            "type": "object",
+                            "required": [
+                              "key"
+                            ],
+                            "properties": {
+                              "key": {
+                                "description": "The key to select.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                "type": "string"
+                              },
+                              "optional": {
+                                "description": "Specify whether the ConfigMap or its key must be defined",
+                                "type": "boolean"
+                              }
+                            },
+                            "x-kubernetes-map-type": "atomic"
+                          },
+                          "secretKeyRef": {
+                            "description": "Selects a key of a secret.",
+                            "type": "object",
+                            "required": [
+                              "key"
+                            ],
+                            "properties": {
+                              "key": {
+                                "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                "type": "string"
+                              },
+                              "optional": {
+                                "description": "Specify whether the Secret or its key must be defined",
+                                "type": "boolean"
+                              }
+                            },
+                            "x-kubernetes-map-type": "atomic"
+                          }
+                        }
+                      },
+                      "settingsSecurity": {
+                        "description": "A reference to the ConfigMap or Secret key that contains\nthe security of the Maven settings.",
+                        "type": "object",
+                        "properties": {
+                          "configMapKeyRef": {
+                            "description": "Selects a key of a ConfigMap.",
+                            "type": "object",
+                            "required": [
+                              "key"
+                            ],
+                            "properties": {
+                              "key": {
+                                "description": "The key to select.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                "type": "string"
+                              },
+                              "optional": {
+                                "description": "Specify whether the ConfigMap or its key must be defined",
+                                "type": "boolean"
+                              }
+                            },
+                            "x-kubernetes-map-type": "atomic"
+                          },
+                          "secretKeyRef": {
+                            "description": "Selects a key of a secret.",
+                            "type": "object",
+                            "required": [
+                              "key"
+                            ],
+                            "properties": {
+                              "key": {
+                                "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                "type": "string"
+                              },
+                              "optional": {
+                                "description": "Specify whether the Secret or its key must be defined",
+                                "type": "boolean"
+                              }
+                            },
+                            "x-kubernetes-map-type": "atomic"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "name": {
+                    "description": "name of the task",
+                    "type": "string"
+                  },
+                  "runtime": {
+                    "description": "the configuration required for the runtime application",
+                    "type": "object",
+                    "required": [
+                      "applicationClass",
+                      "dependencies",
+                      "provider",
+                      "version"
+                    ],
+                    "properties": {
+                      "applicationClass": {
+                        "description": "application entry point (main) to be executed",
+                        "type": "string"
+                      },
+                      "capabilities": {
+                        "description": "features offered by this runtime",
+                        "type": "object",
+                        "additionalProperties": {
+                          "description": "Capability is a particular feature which requires a well known set of dependencies and other properties\nwhich are specified in the runtime catalog.",
+                          "type": "object",
+                          "properties": {
+                            "buildTimeProperties": {
+                              "description": "Set of required Camel build time properties",
+                              "type": "array",
+                              "items": {
+                                "description": "CamelProperty represents a Camel property that may end up in an application.properties file.",
+                                "type": "object",
+                                "required": [
+                                  "key"
+                                ],
+                                "properties": {
+                                  "key": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "dependencies": {
+                              "description": "List of required Maven dependencies",
+                              "type": "array",
+                              "items": {
+                                "description": "MavenArtifact defines a GAV (Group:Artifact:Type:Version:Classifier) Maven artifact.",
+                                "type": "object",
+                                "required": [
+                                  "artifactId",
+                                  "groupId"
+                                ],
+                                "properties": {
+                                  "artifactId": {
+                                    "description": "Maven Artifact",
+                                    "type": "string"
+                                  },
+                                  "classifier": {
+                                    "description": "Maven Classifier",
+                                    "type": "string"
+                                  },
+                                  "groupId": {
+                                    "description": "Maven Group",
+                                    "type": "string"
+                                  },
+                                  "type": {
+                                    "description": "Maven Type",
+                                    "type": "string"
+                                  },
+                                  "version": {
+                                    "description": "Maven Version",
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "metadata": {
+                              "description": "Set of generic metadata",
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            },
+                            "runtimeProperties": {
+                              "description": "Set of required Camel runtime properties",
+                              "type": "array",
+                              "items": {
+                                "description": "CamelProperty represents a Camel property that may end up in an application.properties file.",
+                                "type": "object",
+                                "required": [
+                                  "key"
+                                ],
+                                "properties": {
+                                  "key": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "dependencies": {
+                        "description": "list of dependencies needed to run the application",
+                        "type": "array",
+                        "items": {
+                          "description": "MavenArtifact defines a GAV (Group:Artifact:Type:Version:Classifier) Maven artifact.",
+                          "type": "object",
+                          "required": [
+                            "artifactId",
+                            "groupId"
+                          ],
+                          "properties": {
+                            "artifactId": {
+                              "description": "Maven Artifact",
+                              "type": "string"
+                            },
+                            "classifier": {
+                              "description": "Maven Classifier",
+                              "type": "string"
+                            },
+                            "groupId": {
+                              "description": "Maven Group",
+                              "type": "string"
+                            },
+                            "type": {
+                              "description": "Maven Type",
+                              "type": "string"
+                            },
+                            "version": {
+                              "description": "Maven Version",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "metadata": {
+                        "description": "set of metadata",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "provider": {
+                        "description": "Camel main application provider, ie, Camel Quarkus",
+                        "type": "string"
+                      },
+                      "version": {
+                        "description": "Camel K Runtime version",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "sources": {
+                    "description": "the sources to add at build time",
+                    "type": "array",
+                    "items": {
+                      "description": "SourceSpec defines the configuration for one or more routes to be executed in a certain Camel DSL language.",
+                      "type": "object",
+                      "properties": {
+                        "compression": {
+                          "description": "if the content is compressed (base64 encrypted)",
+                          "type": "boolean"
+                        },
+                        "content": {
+                          "description": "the source code (plain text)",
+                          "type": "string"
+                        },
+                        "contentKey": {
+                          "description": "the confimap key holding the source content",
+                          "type": "string"
+                        },
+                        "contentRef": {
+                          "description": "the confimap reference holding the source content",
+                          "type": "string"
+                        },
+                        "contentType": {
+                          "description": "the content type (tipically text or binary)",
+                          "type": "string"
+                        },
+                        "from-kamelet": {
+                          "description": "True if the spec is generated from a Kamelet",
+                          "type": "boolean"
+                        },
+                        "interceptors": {
+                          "description": "Interceptors are optional identifiers the org.apache.camel.k.RoutesLoader\nuses to pre/post process sources\nDeprecated: no longer in use.",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "language": {
+                          "description": "specify which is the language (Camel DSL) used to interpret this source code",
+                          "type": "string"
+                        },
+                        "loader": {
+                          "description": "Loader is an optional id of the org.apache.camel.k.RoutesLoader that will\ninterpret this source at runtime",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "the name of the specification",
+                          "type": "string"
+                        },
+                        "path": {
+                          "description": "the path where the file is stored",
+                          "type": "string"
+                        },
+                        "property-names": {
+                          "description": "List of property names defined in the source (e.g. if type is \"template\")",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "rawContent": {
+                          "description": "the source code (binary)",
+                          "type": "string",
+                          "format": "byte"
+                        },
+                        "type": {
+                          "description": "Type defines the kind of source described by this object",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "steps": {
+                    "description": "the list of steps to execute (see pkg/builder/)",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "custom": {
+                "description": "User customizable task execution. These are executed after the build and before the package task.",
+                "type": "object",
+                "properties": {
+                  "command": {
+                    "description": "the command to execute\nDeprecated: use ContainerCommands",
+                    "type": "string"
+                  },
+                  "commands": {
+                    "description": "the command to execute",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "configuration": {
+                    "description": "The configuration that should be used to perform the Build.",
+                    "type": "object",
+                    "properties": {
+                      "annotations": {
+                        "description": "Annotation to use for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "limitCPU": {
+                        "description": "The maximum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "limitMemory": {
+                        "description": "The maximum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "nodeSelector": {
+                        "description": "The node selector for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "operatorNamespace": {
+                        "description": "The namespace where to run the builder Pod (must be the same of the operator in charge of this Build reconciliation).",
+                        "type": "string"
+                      },
+                      "orderStrategy": {
+                        "description": "the build order strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "dependencies",
+                          "fifo",
+                          "sequential"
+                        ]
+                      },
+                      "platforms": {
+                        "description": "The list of platforms used in order to build a container image.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "requestCPU": {
+                        "description": "The minimum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "requestMemory": {
+                        "description": "The minimum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "strategy": {
+                        "description": "the strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "routine",
+                          "pod"
+                        ]
+                      },
+                      "toolImage": {
+                        "description": "The container image to be used to run the build.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "image": {
+                    "description": "the container image to use",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "name of the task",
+                    "type": "string"
+                  },
+                  "publishingImage": {
+                    "description": "the desired image build name",
+                    "type": "string"
+                  },
+                  "userId": {
+                    "description": "the user id used to run the container",
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                }
+              },
+              "jib": {
+                "description": "a JibTask, for Jib strategy",
+                "type": "object",
+                "properties": {
+                  "baseImage": {
+                    "description": "base image layer",
+                    "type": "string"
+                  },
+                  "configuration": {
+                    "description": "The configuration that should be used to perform the Build.",
+                    "type": "object",
+                    "properties": {
+                      "annotations": {
+                        "description": "Annotation to use for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "limitCPU": {
+                        "description": "The maximum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "limitMemory": {
+                        "description": "The maximum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "nodeSelector": {
+                        "description": "The node selector for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "operatorNamespace": {
+                        "description": "The namespace where to run the builder Pod (must be the same of the operator in charge of this Build reconciliation).",
+                        "type": "string"
+                      },
+                      "orderStrategy": {
+                        "description": "the build order strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "dependencies",
+                          "fifo",
+                          "sequential"
+                        ]
+                      },
+                      "platforms": {
+                        "description": "The list of platforms used in order to build a container image.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "requestCPU": {
+                        "description": "The minimum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "requestMemory": {
+                        "description": "The minimum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "strategy": {
+                        "description": "the strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "routine",
+                          "pod"
+                        ]
+                      },
+                      "toolImage": {
+                        "description": "The container image to be used to run the build.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "contextDir": {
+                    "description": "can be useful to share info with other tasks",
+                    "type": "string"
+                  },
+                  "image": {
+                    "description": "final image name",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "name of the task",
+                    "type": "string"
+                  },
+                  "registry": {
+                    "description": "where to publish the final image",
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "description": "the URI to access",
+                        "type": "string"
+                      },
+                      "ca": {
+                        "description": "the configmap which stores the Certificate Authority",
+                        "type": "string"
+                      },
+                      "insecure": {
+                        "description": "if the container registry is insecure (ie, http only)",
+                        "type": "boolean"
+                      },
+                      "organization": {
+                        "description": "the registry organization",
+                        "type": "string"
+                      },
+                      "secret": {
+                        "description": "the secret where credentials are stored",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "kaniko": {
+                "description": "a KanikoTask, for Kaniko strategy\nDeprecated: use jib or a custom publishing strategy instead",
+                "type": "object",
+                "properties": {
+                  "baseImage": {
+                    "description": "base image layer",
+                    "type": "string"
+                  },
+                  "cache": {
+                    "description": "use a cache",
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "description": "true if a cache is enabled",
+                        "type": "boolean"
+                      },
+                      "persistentVolumeClaim": {
+                        "description": "the PVC used to store the cache",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "configuration": {
+                    "description": "The configuration that should be used to perform the Build.",
+                    "type": "object",
+                    "properties": {
+                      "annotations": {
+                        "description": "Annotation to use for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "limitCPU": {
+                        "description": "The maximum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "limitMemory": {
+                        "description": "The maximum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "nodeSelector": {
+                        "description": "The node selector for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "operatorNamespace": {
+                        "description": "The namespace where to run the builder Pod (must be the same of the operator in charge of this Build reconciliation).",
+                        "type": "string"
+                      },
+                      "orderStrategy": {
+                        "description": "the build order strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "dependencies",
+                          "fifo",
+                          "sequential"
+                        ]
+                      },
+                      "platforms": {
+                        "description": "The list of platforms used in order to build a container image.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "requestCPU": {
+                        "description": "The minimum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "requestMemory": {
+                        "description": "The minimum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "strategy": {
+                        "description": "the strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "routine",
+                          "pod"
+                        ]
+                      },
+                      "toolImage": {
+                        "description": "The container image to be used to run the build.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "contextDir": {
+                    "description": "can be useful to share info with other tasks",
+                    "type": "string"
+                  },
+                  "executorImage": {
+                    "description": "docker image to use",
+                    "type": "string"
+                  },
+                  "image": {
+                    "description": "final image name",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "name of the task",
+                    "type": "string"
+                  },
+                  "registry": {
+                    "description": "where to publish the final image",
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "description": "the URI to access",
+                        "type": "string"
+                      },
+                      "ca": {
+                        "description": "the configmap which stores the Certificate Authority",
+                        "type": "string"
+                      },
+                      "insecure": {
+                        "description": "if the container registry is insecure (ie, http only)",
+                        "type": "boolean"
+                      },
+                      "organization": {
+                        "description": "the registry organization",
+                        "type": "string"
+                      },
+                      "secret": {
+                        "description": "the secret where credentials are stored",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "verbose": {
+                    "description": "log more information",
+                    "type": "boolean"
+                  }
+                }
+              },
+              "package": {
+                "description": "Application pre publishing\na PackageTask, used to package the project",
+                "type": "object",
+                "properties": {
+                  "baseImage": {
+                    "description": "the base image layer",
+                    "type": "string"
+                  },
+                  "buildDir": {
+                    "description": "workspace directory to use",
+                    "type": "string"
+                  },
+                  "configuration": {
+                    "description": "The configuration that should be used to perform the Build.",
+                    "type": "object",
+                    "properties": {
+                      "annotations": {
+                        "description": "Annotation to use for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "limitCPU": {
+                        "description": "The maximum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "limitMemory": {
+                        "description": "The maximum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "nodeSelector": {
+                        "description": "The node selector for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "operatorNamespace": {
+                        "description": "The namespace where to run the builder Pod (must be the same of the operator in charge of this Build reconciliation).",
+                        "type": "string"
+                      },
+                      "orderStrategy": {
+                        "description": "the build order strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "dependencies",
+                          "fifo",
+                          "sequential"
+                        ]
+                      },
+                      "platforms": {
+                        "description": "The list of platforms used in order to build a container image.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "requestCPU": {
+                        "description": "The minimum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "requestMemory": {
+                        "description": "The minimum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "strategy": {
+                        "description": "the strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "routine",
+                          "pod"
+                        ]
+                      },
+                      "toolImage": {
+                        "description": "The container image to be used to run the build.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "dependencies": {
+                    "description": "the list of dependencies to use for this build",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "git": {
+                    "description": "the configuration of the project to build on Git",
+                    "type": "object",
+                    "properties": {
+                      "branch": {
+                        "description": "the git branch to check out",
+                        "type": "string"
+                      },
+                      "commit": {
+                        "description": "the git commit (full SHA) to check out",
+                        "type": "string"
+                      },
+                      "secret": {
+                        "description": "the Kubernetes secret where token is stored",
+                        "type": "string"
+                      },
+                      "tag": {
+                        "description": "the git tag to check out",
+                        "type": "string"
+                      },
+                      "url": {
+                        "description": "the URL of the project",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "maven": {
+                    "description": "the configuration required by Maven for the application build phase",
+                    "type": "object",
+                    "properties": {
+                      "caSecrets": {
+                        "description": "The Secrets name and key, containing the CA certificate(s) used to connect\nto remote Maven repositories.\nIt can contain X.509 certificates, and PKCS#7 formatted certificate chains.\nA JKS formatted keystore is automatically created to store the CA certificate(s),\nand configured to be used as a trusted certificate(s) by the Maven commands.\nNote that the root CA certificates are also imported into the created keystore.",
+                        "type": "array",
+                        "items": {
+                          "description": "SecretKeySelector selects a key of a Secret.",
+                          "type": "object",
+                          "required": [
+                            "key"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The key of the secret to select from.  Must be a valid secret key.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                              "type": "string"
+                            },
+                            "optional": {
+                              "description": "Specify whether the Secret or its key must be defined",
+                              "type": "boolean"
+                            }
+                          },
+                          "x-kubernetes-map-type": "atomic"
+                        }
+                      },
+                      "cliOptions": {
+                        "description": "The CLI options that are appended to the list of arguments for Maven commands,\ne.g., `-V,--no-transfer-progress,-Dstyle.color=never`.\nSee https://maven.apache.org/ref/3.8.4/maven-embedder/cli.html.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "extension": {
+                        "description": "The Maven build extensions.\nSee https://maven.apache.org/guides/mini/guide-using-extensions.html.",
+                        "type": "array",
+                        "items": {
+                          "description": "MavenArtifact defines a GAV (Group:Artifact:Type:Version:Classifier) Maven artifact.",
+                          "type": "object",
+                          "required": [
+                            "artifactId",
+                            "groupId"
+                          ],
+                          "properties": {
+                            "artifactId": {
+                              "description": "Maven Artifact",
+                              "type": "string"
+                            },
+                            "classifier": {
+                              "description": "Maven Classifier",
+                              "type": "string"
+                            },
+                            "groupId": {
+                              "description": "Maven Group",
+                              "type": "string"
+                            },
+                            "type": {
+                              "description": "Maven Type",
+                              "type": "string"
+                            },
+                            "version": {
+                              "description": "Maven Version",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "localRepository": {
+                        "description": "The path of the local Maven repository.",
+                        "type": "string"
+                      },
+                      "profiles": {
+                        "description": "A reference to the ConfigMap or Secret key that contains\nthe Maven profile.",
+                        "type": "array",
+                        "items": {
+                          "description": "ValueSource --.",
+                          "type": "object",
+                          "properties": {
+                            "configMapKeyRef": {
+                              "description": "Selects a key of a ConfigMap.",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key to select.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                  "type": "string"
+                                },
+                                "optional": {
+                                  "description": "Specify whether the ConfigMap or its key must be defined",
+                                  "type": "boolean"
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic"
+                            },
+                            "secretKeyRef": {
+                              "description": "Selects a key of a secret.",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                  "type": "string"
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": "boolean"
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic"
+                            }
+                          }
+                        }
+                      },
+                      "properties": {
+                        "description": "The Maven properties.",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "repositories": {
+                        "description": "additional repositories",
+                        "type": "array",
+                        "items": {
+                          "description": "Repository defines a Maven repository.",
+                          "type": "object",
+                          "required": [
+                            "id",
+                            "url"
+                          ],
+                          "properties": {
+                            "id": {
+                              "description": "identifies the repository",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "name of the repository",
+                              "type": "string"
+                            },
+                            "releases": {
+                              "description": "can use stable releases",
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "checksumPolicy": {
+                                  "description": "When Maven deploys files to the repository, it also deploys corresponding checksum files.\nYour options are to `ignore`, `fail`, or `warn` on missing or incorrect checksums.",
+                                  "type": "string"
+                                },
+                                "enabled": {
+                                  "description": "is the policy activated or not",
+                                  "type": "boolean"
+                                },
+                                "updatePolicy": {
+                                  "description": "This element specifies how often updates should attempt to occur.\nMaven will compare the local POM's timestamp (stored in a repository's maven-metadata file) to the remote.\nThe choices are: `always`, `daily` (default), `interval:X` (where X is an integer in minutes) or `never`",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "snapshots": {
+                              "description": "can use snapshot",
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "checksumPolicy": {
+                                  "description": "When Maven deploys files to the repository, it also deploys corresponding checksum files.\nYour options are to `ignore`, `fail`, or `warn` on missing or incorrect checksums.",
+                                  "type": "string"
+                                },
+                                "enabled": {
+                                  "description": "is the policy activated or not",
+                                  "type": "boolean"
+                                },
+                                "updatePolicy": {
+                                  "description": "This element specifies how often updates should attempt to occur.\nMaven will compare the local POM's timestamp (stored in a repository's maven-metadata file) to the remote.\nThe choices are: `always`, `daily` (default), `interval:X` (where X is an integer in minutes) or `never`",
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "url": {
+                              "description": "location of the repository",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "servers": {
+                        "description": "Servers (auth)",
+                        "type": "array",
+                        "items": {
+                          "description": "Server see link:https://maven.apache.org/settings.html[Maven settings].",
+                          "type": "object",
+                          "properties": {
+                            "configuration": {
+                              "description": "Properties -- .",
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "password": {
+                              "type": "string"
+                            },
+                            "username": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "settings": {
+                        "description": "A reference to the ConfigMap or Secret key that contains\nthe Maven settings.",
+                        "type": "object",
+                        "properties": {
+                          "configMapKeyRef": {
+                            "description": "Selects a key of a ConfigMap.",
+                            "type": "object",
+                            "required": [
+                              "key"
+                            ],
+                            "properties": {
+                              "key": {
+                                "description": "The key to select.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                "type": "string"
+                              },
+                              "optional": {
+                                "description": "Specify whether the ConfigMap or its key must be defined",
+                                "type": "boolean"
+                              }
+                            },
+                            "x-kubernetes-map-type": "atomic"
+                          },
+                          "secretKeyRef": {
+                            "description": "Selects a key of a secret.",
+                            "type": "object",
+                            "required": [
+                              "key"
+                            ],
+                            "properties": {
+                              "key": {
+                                "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                "type": "string"
+                              },
+                              "optional": {
+                                "description": "Specify whether the Secret or its key must be defined",
+                                "type": "boolean"
+                              }
+                            },
+                            "x-kubernetes-map-type": "atomic"
+                          }
+                        }
+                      },
+                      "settingsSecurity": {
+                        "description": "A reference to the ConfigMap or Secret key that contains\nthe security of the Maven settings.",
+                        "type": "object",
+                        "properties": {
+                          "configMapKeyRef": {
+                            "description": "Selects a key of a ConfigMap.",
+                            "type": "object",
+                            "required": [
+                              "key"
+                            ],
+                            "properties": {
+                              "key": {
+                                "description": "The key to select.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                "type": "string"
+                              },
+                              "optional": {
+                                "description": "Specify whether the ConfigMap or its key must be defined",
+                                "type": "boolean"
+                              }
+                            },
+                            "x-kubernetes-map-type": "atomic"
+                          },
+                          "secretKeyRef": {
+                            "description": "Selects a key of a secret.",
+                            "type": "object",
+                            "required": [
+                              "key"
+                            ],
+                            "properties": {
+                              "key": {
+                                "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                                "type": "string"
+                              },
+                              "optional": {
+                                "description": "Specify whether the Secret or its key must be defined",
+                                "type": "boolean"
+                              }
+                            },
+                            "x-kubernetes-map-type": "atomic"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "name": {
+                    "description": "name of the task",
+                    "type": "string"
+                  },
+                  "runtime": {
+                    "description": "the configuration required for the runtime application",
+                    "type": "object",
+                    "required": [
+                      "applicationClass",
+                      "dependencies",
+                      "provider",
+                      "version"
+                    ],
+                    "properties": {
+                      "applicationClass": {
+                        "description": "application entry point (main) to be executed",
+                        "type": "string"
+                      },
+                      "capabilities": {
+                        "description": "features offered by this runtime",
+                        "type": "object",
+                        "additionalProperties": {
+                          "description": "Capability is a particular feature which requires a well known set of dependencies and other properties\nwhich are specified in the runtime catalog.",
+                          "type": "object",
+                          "properties": {
+                            "buildTimeProperties": {
+                              "description": "Set of required Camel build time properties",
+                              "type": "array",
+                              "items": {
+                                "description": "CamelProperty represents a Camel property that may end up in an application.properties file.",
+                                "type": "object",
+                                "required": [
+                                  "key"
+                                ],
+                                "properties": {
+                                  "key": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "dependencies": {
+                              "description": "List of required Maven dependencies",
+                              "type": "array",
+                              "items": {
+                                "description": "MavenArtifact defines a GAV (Group:Artifact:Type:Version:Classifier) Maven artifact.",
+                                "type": "object",
+                                "required": [
+                                  "artifactId",
+                                  "groupId"
+                                ],
+                                "properties": {
+                                  "artifactId": {
+                                    "description": "Maven Artifact",
+                                    "type": "string"
+                                  },
+                                  "classifier": {
+                                    "description": "Maven Classifier",
+                                    "type": "string"
+                                  },
+                                  "groupId": {
+                                    "description": "Maven Group",
+                                    "type": "string"
+                                  },
+                                  "type": {
+                                    "description": "Maven Type",
+                                    "type": "string"
+                                  },
+                                  "version": {
+                                    "description": "Maven Version",
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "metadata": {
+                              "description": "Set of generic metadata",
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            },
+                            "runtimeProperties": {
+                              "description": "Set of required Camel runtime properties",
+                              "type": "array",
+                              "items": {
+                                "description": "CamelProperty represents a Camel property that may end up in an application.properties file.",
+                                "type": "object",
+                                "required": [
+                                  "key"
+                                ],
+                                "properties": {
+                                  "key": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "dependencies": {
+                        "description": "list of dependencies needed to run the application",
+                        "type": "array",
+                        "items": {
+                          "description": "MavenArtifact defines a GAV (Group:Artifact:Type:Version:Classifier) Maven artifact.",
+                          "type": "object",
+                          "required": [
+                            "artifactId",
+                            "groupId"
+                          ],
+                          "properties": {
+                            "artifactId": {
+                              "description": "Maven Artifact",
+                              "type": "string"
+                            },
+                            "classifier": {
+                              "description": "Maven Classifier",
+                              "type": "string"
+                            },
+                            "groupId": {
+                              "description": "Maven Group",
+                              "type": "string"
+                            },
+                            "type": {
+                              "description": "Maven Type",
+                              "type": "string"
+                            },
+                            "version": {
+                              "description": "Maven Version",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "metadata": {
+                        "description": "set of metadata",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "provider": {
+                        "description": "Camel main application provider, ie, Camel Quarkus",
+                        "type": "string"
+                      },
+                      "version": {
+                        "description": "Camel K Runtime version",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "sources": {
+                    "description": "the sources to add at build time",
+                    "type": "array",
+                    "items": {
+                      "description": "SourceSpec defines the configuration for one or more routes to be executed in a certain Camel DSL language.",
+                      "type": "object",
+                      "properties": {
+                        "compression": {
+                          "description": "if the content is compressed (base64 encrypted)",
+                          "type": "boolean"
+                        },
+                        "content": {
+                          "description": "the source code (plain text)",
+                          "type": "string"
+                        },
+                        "contentKey": {
+                          "description": "the confimap key holding the source content",
+                          "type": "string"
+                        },
+                        "contentRef": {
+                          "description": "the confimap reference holding the source content",
+                          "type": "string"
+                        },
+                        "contentType": {
+                          "description": "the content type (tipically text or binary)",
+                          "type": "string"
+                        },
+                        "from-kamelet": {
+                          "description": "True if the spec is generated from a Kamelet",
+                          "type": "boolean"
+                        },
+                        "interceptors": {
+                          "description": "Interceptors are optional identifiers the org.apache.camel.k.RoutesLoader\nuses to pre/post process sources\nDeprecated: no longer in use.",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "language": {
+                          "description": "specify which is the language (Camel DSL) used to interpret this source code",
+                          "type": "string"
+                        },
+                        "loader": {
+                          "description": "Loader is an optional id of the org.apache.camel.k.RoutesLoader that will\ninterpret this source at runtime",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "the name of the specification",
+                          "type": "string"
+                        },
+                        "path": {
+                          "description": "the path where the file is stored",
+                          "type": "string"
+                        },
+                        "property-names": {
+                          "description": "List of property names defined in the source (e.g. if type is \"template\")",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "rawContent": {
+                          "description": "the source code (binary)",
+                          "type": "string",
+                          "format": "byte"
+                        },
+                        "type": {
+                          "description": "Type defines the kind of source described by this object",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "steps": {
+                    "description": "the list of steps to execute (see pkg/builder/)",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "s2i": {
+                "description": "a S2iTask, for S2I strategy\nDeprecated: use jib or a custom publishing strategy instead",
+                "type": "object",
+                "properties": {
+                  "baseImage": {
+                    "description": "base image layer",
+                    "type": "string"
+                  },
+                  "configuration": {
+                    "description": "The configuration that should be used to perform the Build.",
+                    "type": "object",
+                    "properties": {
+                      "annotations": {
+                        "description": "Annotation to use for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "limitCPU": {
+                        "description": "The maximum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "limitMemory": {
+                        "description": "The maximum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "nodeSelector": {
+                        "description": "The node selector for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "operatorNamespace": {
+                        "description": "The namespace where to run the builder Pod (must be the same of the operator in charge of this Build reconciliation).",
+                        "type": "string"
+                      },
+                      "orderStrategy": {
+                        "description": "the build order strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "dependencies",
+                          "fifo",
+                          "sequential"
+                        ]
+                      },
+                      "platforms": {
+                        "description": "The list of platforms used in order to build a container image.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "requestCPU": {
+                        "description": "The minimum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "requestMemory": {
+                        "description": "The minimum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "strategy": {
+                        "description": "the strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "routine",
+                          "pod"
+                        ]
+                      },
+                      "toolImage": {
+                        "description": "The container image to be used to run the build.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "contextDir": {
+                    "description": "can be useful to share info with other tasks",
+                    "type": "string"
+                  },
+                  "image": {
+                    "description": "final image name",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "name of the task",
+                    "type": "string"
+                  },
+                  "registry": {
+                    "description": "where to publish the final image",
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "description": "the URI to access",
+                        "type": "string"
+                      },
+                      "ca": {
+                        "description": "the configmap which stores the Certificate Authority",
+                        "type": "string"
+                      },
+                      "insecure": {
+                        "description": "if the container registry is insecure (ie, http only)",
+                        "type": "boolean"
+                      },
+                      "organization": {
+                        "description": "the registry organization",
+                        "type": "string"
+                      },
+                      "secret": {
+                        "description": "the secret where credentials are stored",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "tag": {
+                    "description": "used by the ImageStream",
+                    "type": "string"
+                  }
+                }
+              },
+              "spectrum": {
+                "description": "a SpectrumTask, for Spectrum strategy\nDeprecated: use jib or a custom publishing strategy instead",
+                "type": "object",
+                "properties": {
+                  "baseImage": {
+                    "description": "base image layer",
+                    "type": "string"
+                  },
+                  "configuration": {
+                    "description": "The configuration that should be used to perform the Build.",
+                    "type": "object",
+                    "properties": {
+                      "annotations": {
+                        "description": "Annotation to use for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "limitCPU": {
+                        "description": "The maximum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "limitMemory": {
+                        "description": "The maximum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "nodeSelector": {
+                        "description": "The node selector for the builder pod. Only used for `pod` strategy",
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "operatorNamespace": {
+                        "description": "The namespace where to run the builder Pod (must be the same of the operator in charge of this Build reconciliation).",
+                        "type": "string"
+                      },
+                      "orderStrategy": {
+                        "description": "the build order strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "dependencies",
+                          "fifo",
+                          "sequential"
+                        ]
+                      },
+                      "platforms": {
+                        "description": "The list of platforms used in order to build a container image.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "requestCPU": {
+                        "description": "The minimum amount of CPU required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "requestMemory": {
+                        "description": "The minimum amount of memory required. Only used for `pod` strategy",
+                        "type": "string"
+                      },
+                      "strategy": {
+                        "description": "the strategy to adopt",
+                        "type": "string",
+                        "enum": [
+                          "routine",
+                          "pod"
+                        ]
+                      },
+                      "toolImage": {
+                        "description": "The container image to be used to run the build.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "contextDir": {
+                    "description": "can be useful to share info with other tasks",
+                    "type": "string"
+                  },
+                  "image": {
+                    "description": "final image name",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "name of the task",
+                    "type": "string"
+                  },
+                  "registry": {
+                    "description": "where to publish the final image",
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "description": "the URI to access",
+                        "type": "string"
+                      },
+                      "ca": {
+                        "description": "the configmap which stores the Certificate Authority",
+                        "type": "string"
+                      },
+                      "insecure": {
+                        "description": "if the container registry is insecure (ie, http only)",
+                        "type": "boolean"
+                      },
+                      "organization": {
+                        "description": "the registry organization",
+                        "type": "string"
+                      },
+                      "secret": {
+                        "description": "the secret where credentials are stored",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "timeout": {
+          "description": "Timeout defines the Build maximum execution duration.\nThe Build deadline is set to the Build start time plus the Timeout duration.\nIf the Build deadline is exceeded, the Build context is canceled,\nand its phase set to BuildPhaseFailed.",
+          "type": "string",
+          "format": "duration"
+        },
+        "toolImage": {
+          "description": "The container image to be used to run the build.\nDeprecated: no longer in use in Camel K 2 - maintained for backward compatibility",
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "description": "BuildStatus defines the observed state of Build.",
+      "type": "object",
+      "properties": {
+        "artifacts": {
+          "description": "a list of artifacts contained in the build",
+          "type": "array",
+          "items": {
+            "description": "Artifact represents a materialized artifact (a jar dependency or in general a file used by the build).",
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "checksum": {
+                "description": "a checksum (SHA1) of the content",
+                "type": "string"
+              },
+              "id": {
+                "description": "the identification (GAV for maven dependencies or file name for other file types)",
+                "type": "string"
+              },
+              "location": {
+                "description": "where it is located in the builder `Pod`",
+                "type": "string"
+              },
+              "target": {
+                "description": "the expected location in the runtime",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "baseImage": {
+          "description": "the base image used for this build",
+          "type": "string"
+        },
+        "conditions": {
+          "description": "a list of conditions occurred during the build",
+          "type": "array",
+          "items": {
+            "description": "BuildCondition describes the state of a resource at a certain point.",
+            "type": "object",
+            "required": [
+              "status",
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "description": "Last time the condition transitioned from one status to another.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "lastUpdateTime": {
+                "description": "The last time this condition was updated.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "message": {
+                "description": "A human-readable message indicating details about the transition.",
+                "type": "string"
+              },
+              "reason": {
+                "description": "The reason for the condition's last transition.",
+                "type": "string"
+              },
+              "status": {
+                "description": "Status of the condition, one of True, False, Unknown.",
+                "type": "string"
+              },
+              "type": {
+                "description": "Type of integration condition.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "digest": {
+          "description": "the digest from image",
+          "type": "string"
+        },
+        "duration": {
+          "description": "how long it took for the build\nChange to Duration / ISO 8601 when CRD uses OpenAPI spec v3\nhttps://github.com/OAI/OpenAPI-Specification/issues/845",
+          "type": "string"
+        },
+        "error": {
+          "description": "the error description (if any)",
+          "type": "string"
+        },
+        "failure": {
+          "description": "the reason of the failure (if any)",
+          "type": "object",
+          "required": [
+            "reason",
+            "recovery",
+            "time"
+          ],
+          "properties": {
+            "reason": {
+              "description": "a short text specifying the reason",
+              "type": "string"
+            },
+            "recovery": {
+              "description": "the recovery attempted for this failure",
+              "type": "object",
+              "required": [
+                "attempt",
+                "attemptMax"
+              ],
+              "properties": {
+                "attempt": {
+                  "description": "attempt number",
+                  "type": "integer"
+                },
+                "attemptMax": {
+                  "description": "maximum number of attempts",
+                  "type": "integer"
+                },
+                "attemptTime": {
+                  "description": "time of the attempt execution",
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "time": {
+              "description": "the time when the failure has happened",
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "image": {
+          "description": "the image name built",
+          "type": "string"
+        },
+        "observedGeneration": {
+          "description": "ObservedGeneration is the most recent generation observed for this Build.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "phase": {
+          "description": "describes the phase",
+          "type": "string"
+        },
+        "rootImage": {
+          "description": "root image (the first image from which the incremental image has started)",
+          "type": "string"
+        },
+        "startedAt": {
+          "description": "the time when it started",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "camel.apache.org",
+      "kind": "Build",
+      "version": "v1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "$schema": "http://json-schema.org/schema#"
+}

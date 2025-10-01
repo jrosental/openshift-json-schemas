@@ -1,0 +1,316 @@
+{
+  "description": "BuildTriggerCause holds information about a triggered build. It is used for displaying build trigger data for each build and build configuration in oc describe. It is also used to describe which triggers led to the most recent update in the build configuration.",
+  "type": "object",
+  "properties": {
+    "bitbucketWebHook": {
+      "description": "BitbucketWebHookCause has information about a Bitbucket webhook that triggered a build.",
+      "type": "object",
+      "properties": {
+        "revision": {
+          "description": "SourceRevision is the revision or commit information from the source for the build",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "git": {
+              "description": "GitSourceRevision is the commit information from a git source for a build",
+              "type": "object",
+              "properties": {
+                "author": {
+                  "description": "SourceControlUser defines the identity of a user of source control",
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "description": "email of the source control user",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "name of the source control user",
+                      "type": "string"
+                    }
+                  }
+                },
+                "commit": {
+                  "description": "commit is the commit hash identifying a specific commit",
+                  "type": "string"
+                },
+                "committer": {
+                  "description": "SourceControlUser defines the identity of a user of source control",
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "description": "email of the source control user",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "name of the source control user",
+                      "type": "string"
+                    }
+                  }
+                },
+                "message": {
+                  "description": "message is the description of a specific commit",
+                  "type": "string"
+                }
+              }
+            },
+            "type": {
+              "description": "type of the build source, may be one of 'Source', 'Dockerfile', 'Binary', or 'Images'",
+              "type": "string"
+            }
+          }
+        },
+        "secret": {
+          "description": "Secret is the obfuscated webhook secret that triggered a build.",
+          "type": "string"
+        }
+      }
+    },
+    "genericWebHook": {
+      "description": "GenericWebHookCause holds information about a generic WebHook that triggered a build.",
+      "type": "object",
+      "properties": {
+        "revision": {
+          "description": "SourceRevision is the revision or commit information from the source for the build",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "git": {
+              "description": "GitSourceRevision is the commit information from a git source for a build",
+              "type": "object",
+              "properties": {
+                "author": {
+                  "description": "SourceControlUser defines the identity of a user of source control",
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "description": "email of the source control user",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "name of the source control user",
+                      "type": "string"
+                    }
+                  }
+                },
+                "commit": {
+                  "description": "commit is the commit hash identifying a specific commit",
+                  "type": "string"
+                },
+                "committer": {
+                  "description": "SourceControlUser defines the identity of a user of source control",
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "description": "email of the source control user",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "name of the source control user",
+                      "type": "string"
+                    }
+                  }
+                },
+                "message": {
+                  "description": "message is the description of a specific commit",
+                  "type": "string"
+                }
+              }
+            },
+            "type": {
+              "description": "type of the build source, may be one of 'Source', 'Dockerfile', 'Binary', or 'Images'",
+              "type": "string"
+            }
+          }
+        },
+        "secret": {
+          "description": "secret is the obfuscated webhook secret that triggered a build.",
+          "type": "string"
+        }
+      }
+    },
+    "githubWebHook": {
+      "description": "GitHubWebHookCause has information about a GitHub webhook that triggered a build.",
+      "type": "object",
+      "properties": {
+        "revision": {
+          "description": "SourceRevision is the revision or commit information from the source for the build",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "git": {
+              "description": "GitSourceRevision is the commit information from a git source for a build",
+              "type": "object",
+              "properties": {
+                "author": {
+                  "description": "SourceControlUser defines the identity of a user of source control",
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "description": "email of the source control user",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "name of the source control user",
+                      "type": "string"
+                    }
+                  }
+                },
+                "commit": {
+                  "description": "commit is the commit hash identifying a specific commit",
+                  "type": "string"
+                },
+                "committer": {
+                  "description": "SourceControlUser defines the identity of a user of source control",
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "description": "email of the source control user",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "name of the source control user",
+                      "type": "string"
+                    }
+                  }
+                },
+                "message": {
+                  "description": "message is the description of a specific commit",
+                  "type": "string"
+                }
+              }
+            },
+            "type": {
+              "description": "type of the build source, may be one of 'Source', 'Dockerfile', 'Binary', or 'Images'",
+              "type": "string"
+            }
+          }
+        },
+        "secret": {
+          "description": "secret is the obfuscated webhook secret that triggered a build.",
+          "type": "string"
+        }
+      }
+    },
+    "gitlabWebHook": {
+      "description": "GitLabWebHookCause has information about a GitLab webhook that triggered a build.",
+      "type": "object",
+      "properties": {
+        "revision": {
+          "description": "SourceRevision is the revision or commit information from the source for the build",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "git": {
+              "description": "GitSourceRevision is the commit information from a git source for a build",
+              "type": "object",
+              "properties": {
+                "author": {
+                  "description": "SourceControlUser defines the identity of a user of source control",
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "description": "email of the source control user",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "name of the source control user",
+                      "type": "string"
+                    }
+                  }
+                },
+                "commit": {
+                  "description": "commit is the commit hash identifying a specific commit",
+                  "type": "string"
+                },
+                "committer": {
+                  "description": "SourceControlUser defines the identity of a user of source control",
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "description": "email of the source control user",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "name of the source control user",
+                      "type": "string"
+                    }
+                  }
+                },
+                "message": {
+                  "description": "message is the description of a specific commit",
+                  "type": "string"
+                }
+              }
+            },
+            "type": {
+              "description": "type of the build source, may be one of 'Source', 'Dockerfile', 'Binary', or 'Images'",
+              "type": "string"
+            }
+          }
+        },
+        "secret": {
+          "description": "Secret is the obfuscated webhook secret that triggered a build.",
+          "type": "string"
+        }
+      }
+    },
+    "imageChangeBuild": {
+      "description": "ImageChangeCause contains information about the image that triggered a build",
+      "type": "object",
+      "properties": {
+        "fromRef": {
+          "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+          "type": "object",
+          "properties": {
+            "apiVersion": {
+              "description": "API version of the referent.",
+              "type": "string"
+            },
+            "fieldPath": {
+              "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.",
+              "type": "string"
+            },
+            "kind": {
+              "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+              "type": "string"
+            },
+            "name": {
+              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+              "type": "string"
+            },
+            "resourceVersion": {
+              "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+              "type": "string"
+            },
+            "uid": {
+              "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+              "type": "string"
+            }
+          },
+          "x-kubernetes-map-type": "atomic"
+        },
+        "imageID": {
+          "description": "imageID is the ID of the image that triggered a new build.",
+          "type": "string"
+        }
+      }
+    },
+    "message": {
+      "description": "message is used to store a human readable message for why the build was triggered. E.g.: \"Manually triggered by user\", \"Configuration change\",etc.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

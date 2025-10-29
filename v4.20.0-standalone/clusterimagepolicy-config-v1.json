@@ -1,0 +1,666 @@
+{
+  "description": "ClusterImagePolicy holds cluster-wide configuration for image signature verification\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+  "type": "object",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "config.openshift.io/v1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "ClusterImagePolicy"
+      ]
+    },
+    "metadata": {
+      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "annotations": {
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "creationTimestamp": {
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "deletionGracePeriodSeconds": {
+          "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "deletionTimestamp": {
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "finalizers": {
+          "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "x-kubernetes-list-type": "set",
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "generateName": {
+          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will return a 409.\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "generation": {
+          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "labels": {
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "managedFields": {
+          "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "APIVersion defines the version of this resource that this field set applies to. The format is \"group/version\" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fieldsType": {
+                "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fieldsV1": {
+                "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "manager": {
+                "description": "Manager is an identifier of the workflow managing these fields.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "operation": {
+                "description": "Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "subresource": {
+                "description": "Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "time": {
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              }
+            }
+          },
+          "x-kubernetes-list-type": "atomic"
+        },
+        "name": {
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namespace": {
+          "description": "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ownerReferences": {
+          "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "apiVersion",
+              "kind",
+              "name",
+              "uid"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "API version of the referent.",
+                "type": "string"
+              },
+              "blockOwnerDeletion": {
+                "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "controller": {
+                "description": "If true, this reference points to the managing controller.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "kind": {
+                "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                "type": "string"
+              },
+              "name": {
+                "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+                "type": "string"
+              },
+              "uid": {
+                "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+                "type": "string"
+              }
+            },
+            "x-kubernetes-map-type": "atomic"
+          },
+          "x-kubernetes-list-map-keys": [
+            "uid"
+          ],
+          "x-kubernetes-list-type": "map",
+          "x-kubernetes-patch-merge-key": "uid",
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "resourceVersion": {
+          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selfLink": {
+          "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "uid": {
+          "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "spec": {
+      "description": "spec contains the configuration for the cluster image policy.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "policy",
+        "scopes"
+      ],
+      "properties": {
+        "policy": {
+          "description": "policy is a required field that contains configuration to allow scopes to be verified, and defines how\nimages not matching the verification policy will be treated.",
+          "type": "object",
+          "required": [
+            "rootOfTrust"
+          ],
+          "properties": {
+            "rootOfTrust": {
+              "description": "rootOfTrust is a required field that defines the root of trust for verifying image signatures during retrieval.\nThis allows image consumers to specify policyType and corresponding configuration of the policy, matching how the policy was generated.",
+              "type": "object",
+              "required": [
+                "policyType"
+              ],
+              "properties": {
+                "fulcioCAWithRekor": {
+                  "description": "fulcioCAWithRekor defines the root of trust configuration based on the Fulcio certificate and the Rekor public key.\nfulcioCAWithRekor is required when policyType is FulcioCAWithRekor, and forbidden otherwise\nFor more information about Fulcio and Rekor, please refer to the document at:\nhttps://github.com/sigstore/fulcio and https://github.com/sigstore/rekor",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "fulcioCAData",
+                    "fulcioSubject",
+                    "rekorKeyData"
+                  ],
+                  "properties": {
+                    "fulcioCAData": {
+                      "description": "fulcioCAData is a required field contains inline base64-encoded data for the PEM format fulcio CA.\nfulcioCAData must be at most 8192 characters.",
+                      "type": "string",
+                      "format": "byte",
+                      "maxLength": 8192,
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "the fulcioCAData must start with base64 encoding of '-----BEGIN CERTIFICATE-----'.",
+                          "rule": "string(self).startsWith('-----BEGIN CERTIFICATE-----')"
+                        },
+                        {
+                          "message": "the fulcioCAData must end with base64 encoding of '-----END CERTIFICATE-----'.",
+                          "rule": "string(self).endsWith('-----END CERTIFICATE-----\\n') || string(self).endsWith('-----END CERTIFICATE-----')"
+                        }
+                      ]
+                    },
+                    "fulcioSubject": {
+                      "description": "fulcioSubject is a required field specifies OIDC issuer and the email of the Fulcio authentication configuration.",
+                      "type": "object",
+                      "required": [
+                        "oidcIssuer",
+                        "signedEmail"
+                      ],
+                      "properties": {
+                        "oidcIssuer": {
+                          "description": "oidcIssuer is a required filed contains the expected OIDC issuer. The oidcIssuer must be a valid URL and at most 2048 characters in length.\nIt will be verified that the Fulcio-issued certificate contains a (Fulcio-defined) certificate extension pointing at this OIDC issuer URL.\nWhen Fulcio issues certificates, it includes a value based on an URL inside the client-provided ID token.\nExample: \"https://expected.OIDC.issuer/\"",
+                          "type": "string",
+                          "maxLength": 2048,
+                          "x-kubernetes-validations": [
+                            {
+                              "message": "oidcIssuer must be a valid URL",
+                              "rule": "isURL(self)"
+                            }
+                          ]
+                        },
+                        "signedEmail": {
+                          "description": "signedEmail is a required field holds the email address that the Fulcio certificate is issued for.\nThe signedEmail must be a valid email address and at most 320 characters in length.\nExample: \"expected-signing-user@example.com\"",
+                          "type": "string",
+                          "maxLength": 320,
+                          "x-kubernetes-validations": [
+                            {
+                              "message": "invalid email address",
+                              "rule": "self.matches('^\\\\S+@\\\\S+$')"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "rekorKeyData": {
+                      "description": "rekorKeyData is a required field contains inline base64-encoded data for the PEM format from the Rekor public key.\nrekorKeyData must be at most 8192 characters.",
+                      "type": "string",
+                      "format": "byte",
+                      "maxLength": 8192,
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "the rekorKeyData must start with base64 encoding of '-----BEGIN PUBLIC KEY-----'.",
+                          "rule": "string(self).startsWith('-----BEGIN PUBLIC KEY-----')"
+                        },
+                        {
+                          "message": "the rekorKeyData must end with base64 encoding of '-----END PUBLIC KEY-----'.",
+                          "rule": "string(self).endsWith('-----END PUBLIC KEY-----\\n') || string(self).endsWith('-----END PUBLIC KEY-----')"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "policyType": {
+                  "description": "policyType is a required field specifies the type of the policy for verification. This field must correspond to how the policy was generated.\nAllowed values are \"PublicKey\", \"FulcioCAWithRekor\", and \"PKI\".\nWhen set to \"PublicKey\", the policy relies on a sigstore publicKey and may optionally use a Rekor verification.\nWhen set to \"FulcioCAWithRekor\", the policy is based on the Fulcio certification and incorporates a Rekor verification.\nWhen set to \"PKI\", the policy is based on the certificates from Bring Your Own Public Key Infrastructure (BYOPKI). This value is enabled by turning on the SigstoreImageVerificationPKI feature gate.",
+                  "type": "string"
+                },
+                "publicKey": {
+                  "description": "publicKey defines the root of trust configuration based on a sigstore public key. Optionally include a Rekor public key for Rekor verification.\npublicKey is required when policyType is PublicKey, and forbidden otherwise.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "keyData"
+                  ],
+                  "properties": {
+                    "keyData": {
+                      "description": "keyData is a required field contains inline base64-encoded data for the PEM format public key.\nkeyData must be at most 8192 characters.",
+                      "type": "string",
+                      "format": "byte",
+                      "maxLength": 8192,
+                      "minLength": 68,
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "the keyData must start with base64 encoding of '-----BEGIN PUBLIC KEY-----'.",
+                          "rule": "string(self).startsWith('-----BEGIN PUBLIC KEY-----')"
+                        },
+                        {
+                          "message": "the keyData must end with base64 encoding of '-----END PUBLIC KEY-----'.",
+                          "rule": "string(self).endsWith('-----END PUBLIC KEY-----\\n') || string(self).endsWith('-----END PUBLIC KEY-----')"
+                        }
+                      ]
+                    },
+                    "rekorKeyData": {
+                      "description": "rekorKeyData is an optional field contains inline base64-encoded data for the PEM format from the Rekor public key.\nrekorKeyData must be at most 8192 characters.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "byte",
+                      "maxLength": 8192,
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "the rekorKeyData must start with base64 encoding of '-----BEGIN PUBLIC KEY-----'.",
+                          "rule": "string(self).startsWith('-----BEGIN PUBLIC KEY-----')"
+                        },
+                        {
+                          "message": "the rekorKeyData must end with base64 encoding of '-----END PUBLIC KEY-----'.",
+                          "rule": "string(self).endsWith('-----END PUBLIC KEY-----\\n') || string(self).endsWith('-----END PUBLIC KEY-----')"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "x-kubernetes-validations": [
+                {
+                  "message": "publicKey is required when policyType is PublicKey, and forbidden otherwise",
+                  "rule": "has(self.policyType) && self.policyType == 'PublicKey' ? has(self.publicKey) : !has(self.publicKey)"
+                },
+                {
+                  "message": "fulcioCAWithRekor is required when policyType is FulcioCAWithRekor, and forbidden otherwise",
+                  "rule": "has(self.policyType) && self.policyType == 'FulcioCAWithRekor' ? has(self.fulcioCAWithRekor) : !has(self.fulcioCAWithRekor)"
+                }
+              ]
+            },
+            "signedIdentity": {
+              "description": "signedIdentity is an optional field specifies what image identity the signature claims about the image. This is useful when the image identity in the signature differs from the original image spec, such as when mirror registry is configured for the image scope, the signature from the mirror registry contains the image identity of the mirror instead of the original scope.\nThe required matchPolicy field specifies the approach used in the verification process to verify the identity in the signature and the actual image identity, the default matchPolicy is \"MatchRepoDigestOrExact\".",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "matchPolicy"
+              ],
+              "properties": {
+                "exactRepository": {
+                  "description": "exactRepository specifies the repository that must be exactly matched by the identity in the signature.\nexactRepository is required if matchPolicy is set to \"ExactRepository\". It is used to verify that the signature claims an identity matching this exact repository, rather than the original image identity.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "repository"
+                  ],
+                  "properties": {
+                    "repository": {
+                      "description": "repository is the reference of the image identity to be matched.\nrepository is required if matchPolicy is set to \"ExactRepository\".\nThe value should be a repository name (by omitting the tag or digest) in a registry implementing the \"Docker Registry HTTP API V2\". For example, docker.io/library/busybox",
+                      "type": "string",
+                      "maxLength": 512,
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "invalid repository or prefix in the signedIdentity, should not include the tag or digest",
+                          "rule": "self.matches('.*:([\\\\w][\\\\w.-]{0,127})$')? self.matches('^(localhost:[0-9]+)$'): true"
+                        },
+                        {
+                          "message": "invalid repository or prefix in the signedIdentity. The repository or prefix must starts with 'localhost' or a valid '.' separated domain. If contains registry paths, the path component names must start with at least one letter or number, with following parts able to be separated by one period, one or two underscore and multiple dashes.",
+                          "rule": "self.matches('^(((?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])(?:\\\\.(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]))+(?::[0-9]+)?)|(localhost(?::[0-9]+)?))(?:(?:/[a-z0-9]+(?:(?:(?:[._]|__|[-]*)[a-z0-9]+)+)?)+)?$')"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "matchPolicy": {
+                  "description": "matchPolicy is a required filed specifies matching strategy to verify the image identity in the signature against the image scope.\nAllowed values are \"MatchRepoDigestOrExact\", \"MatchRepository\", \"ExactRepository\", \"RemapIdentity\". When omitted, the default value is \"MatchRepoDigestOrExact\".\nWhen set to \"MatchRepoDigestOrExact\", the identity in the signature must be in the same repository as the image identity if the image identity is referenced by a digest. Otherwise, the identity in the signature must be the same as the image identity.\nWhen set to \"MatchRepository\", the identity in the signature must be in the same repository as the image identity.\nWhen set to \"ExactRepository\", the exactRepository must be specified. The identity in the signature must be in the same repository as a specific identity specified by \"repository\".\nWhen set to \"RemapIdentity\", the remapIdentity must be specified. The signature must be in the same as the remapped image identity. Remapped image identity is obtained by replacing the \"prefix\" with the specified \u201csignedPrefix\u201d if the the image identity matches the specified remapPrefix.",
+                  "type": "string",
+                  "enum": [
+                    "MatchRepoDigestOrExact",
+                    "MatchRepository",
+                    "ExactRepository",
+                    "RemapIdentity"
+                  ]
+                },
+                "remapIdentity": {
+                  "description": "remapIdentity specifies the prefix remapping rule for verifying image identity.\nremapIdentity is required if matchPolicy is set to \"RemapIdentity\". It is used to verify that the signature claims a different registry/repository prefix than the original image.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "prefix",
+                    "signedPrefix"
+                  ],
+                  "properties": {
+                    "prefix": {
+                      "description": "prefix is required if matchPolicy is set to \"RemapIdentity\".\nprefix is the prefix of the image identity to be matched.\nIf the image identity matches the specified prefix, that prefix is replaced by the specified \u201csignedPrefix\u201d (otherwise it is used as unchanged and no remapping takes place).\nThis is useful when verifying signatures for a mirror of some other repository namespace that preserves the vendor\u2019s repository structure.\nThe prefix and signedPrefix values can be either host[:port] values (matching exactly the same host[:port], string), repository namespaces,\nor repositories (i.e. they must not contain tags/digests), and match as prefixes of the fully expanded form.\nFor example, docker.io/library/busybox (not busybox) to specify that single repository, or docker.io/library (not an empty string) to specify the parent namespace of docker.io/library/busybox.",
+                      "type": "string",
+                      "maxLength": 512,
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "invalid repository or prefix in the signedIdentity, should not include the tag or digest",
+                          "rule": "self.matches('.*:([\\\\w][\\\\w.-]{0,127})$')? self.matches('^(localhost:[0-9]+)$'): true"
+                        },
+                        {
+                          "message": "invalid repository or prefix in the signedIdentity. The repository or prefix must starts with 'localhost' or a valid '.' separated domain. If contains registry paths, the path component names must start with at least one letter or number, with following parts able to be separated by one period, one or two underscore and multiple dashes.",
+                          "rule": "self.matches('^(((?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])(?:\\\\.(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]))+(?::[0-9]+)?)|(localhost(?::[0-9]+)?))(?:(?:/[a-z0-9]+(?:(?:(?:[._]|__|[-]*)[a-z0-9]+)+)?)+)?$')"
+                        }
+                      ]
+                    },
+                    "signedPrefix": {
+                      "description": "signedPrefix is required if matchPolicy is set to \"RemapIdentity\".\nsignedPrefix is the prefix of the image identity to be matched in the signature. The format is the same as \"prefix\". The values can be either host[:port] values (matching exactly the same host[:port], string), repository namespaces,\nor repositories (i.e. they must not contain tags/digests), and match as prefixes of the fully expanded form.\nFor example, docker.io/library/busybox (not busybox) to specify that single repository, or docker.io/library (not an empty string) to specify the parent namespace of docker.io/library/busybox.",
+                      "type": "string",
+                      "maxLength": 512,
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "invalid repository or prefix in the signedIdentity, should not include the tag or digest",
+                          "rule": "self.matches('.*:([\\\\w][\\\\w.-]{0,127})$')? self.matches('^(localhost:[0-9]+)$'): true"
+                        },
+                        {
+                          "message": "invalid repository or prefix in the signedIdentity. The repository or prefix must starts with 'localhost' or a valid '.' separated domain. If contains registry paths, the path component names must start with at least one letter or number, with following parts able to be separated by one period, one or two underscore and multiple dashes.",
+                          "rule": "self.matches('^(((?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])(?:\\\\.(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]))+(?::[0-9]+)?)|(localhost(?::[0-9]+)?))(?:(?:/[a-z0-9]+(?:(?:(?:[._]|__|[-]*)[a-z0-9]+)+)?)+)?$')"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "x-kubernetes-validations": [
+                {
+                  "message": "exactRepository is required when matchPolicy is ExactRepository, and forbidden otherwise",
+                  "rule": "(has(self.matchPolicy) && self.matchPolicy == 'ExactRepository') ? has(self.exactRepository) : !has(self.exactRepository)"
+                },
+                {
+                  "message": "remapIdentity is required when matchPolicy is RemapIdentity, and forbidden otherwise",
+                  "rule": "(has(self.matchPolicy) && self.matchPolicy == 'RemapIdentity') ? has(self.remapIdentity) : !has(self.remapIdentity)"
+                }
+              ]
+            }
+          }
+        },
+        "scopes": {
+          "description": "scopes is a required field that defines the list of image identities assigned to a policy. Each item refers to a scope in a registry implementing the \"Docker Registry HTTP API V2\".\nScopes matching individual images are named Docker references in the fully expanded form, either using a tag or digest. For example, docker.io/library/busybox:latest (not busybox:latest).\nMore general scopes are prefixes of individual-image scopes, and specify a repository (by omitting the tag or digest), a repository\nnamespace, or a registry host (by only specifying the host name and possibly a port number) or a wildcard expression starting with `*.`, for matching all subdomains (not including a port number).\nWildcards are only supported for subdomain matching, and may not be used in the middle of the host, i.e.  *.example.com is a valid case, but example*.*.com is not.\nThis support no more than 256 scopes in one object. If multiple scopes match a given image, only the policy requirements for the most specific scope apply. The policy requirements for more general scopes are ignored.\nIn addition to setting a policy appropriate for your own deployed applications, make sure that a policy on the OpenShift image repositories\nquay.io/openshift-release-dev/ocp-release, quay.io/openshift-release-dev/ocp-v4.0-art-dev (or on a more general scope) allows deployment of the OpenShift images required for cluster operation.\nIf a scope is configured in both the ClusterImagePolicy and the ImagePolicy, or if the scope in ImagePolicy is nested under one of the scopes from the ClusterImagePolicy, only the policy from the ClusterImagePolicy will be applied.\nFor additional details about the format, please refer to the document explaining the docker transport field,\nwhich can be found at: https://github.com/containers/image/blob/main/docs/containers-policy.json.5.md#docker",
+          "type": "array",
+          "maxItems": 256,
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 512,
+            "x-kubernetes-validations": [
+              {
+                "message": "invalid image scope format, scope must contain a fully qualified domain name or 'localhost'",
+                "rule": "size(self.split('/')[0].split('.')) == 1 ? self.split('/')[0].split('.')[0].split(':')[0] == 'localhost' : true"
+              },
+              {
+                "message": "invalid image scope with wildcard, a wildcard can only be at the start of the domain and is only supported for subdomain matching, not path matching",
+                "rule": "self.contains('*') ? self.matches('^\\\\*(?:\\\\.(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]))+$') : true"
+              },
+              {
+                "message": "invalid repository namespace or image specification in the image scope",
+                "rule": "!self.contains('*') ? self.matches('^((((?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])(?:\\\\.(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]))+(?::[0-9]+)?)|(localhost(?::[0-9]+)?))(?:(?:/[a-z0-9]+(?:(?:(?:[._]|__|[-]*)[a-z0-9]+)+)?)+)?)(?::([\\\\w][\\\\w.-]{0,127}))?(?:@([A-Za-z][A-Za-z0-9]*(?:[-_+.][A-Za-z][A-Za-z0-9]*)*[:][[:xdigit:]]{32,}))?$') : true"
+              }
+            ]
+          },
+          "x-kubernetes-list-type": "set"
+        }
+      }
+    },
+    "status": {
+      "description": "status contains the observed state of the resource.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "conditions": {
+          "description": "conditions provide details on the status of this API Resource.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "maxItems": 8,
+          "minItems": 1,
+          "items": {
+            "description": "Condition contains details for one aspect of the current state of this API Resource.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "lastTransitionTime",
+              "message",
+              "reason",
+              "status",
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "description": "lastTransitionTime is the last time the condition transitioned from one status to another.\nThis should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "message": {
+                "description": "message is a human readable message indicating details about the transition.\nThis may be an empty string.",
+                "type": "string",
+                "maxLength": 32768
+              },
+              "observedGeneration": {
+                "description": "observedGeneration represents the .metadata.generation that the condition was set based upon.\nFor instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date\nwith respect to the current state of the instance.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "minimum": 0
+              },
+              "reason": {
+                "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition.\nProducers of specific condition types may define expected values and meanings for this field,\nand whether the values are considered a guaranteed API.\nThe value should be a CamelCase string.\nThis field may not be empty.",
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1,
+                "pattern": "^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$"
+              },
+              "status": {
+                "description": "status of the condition, one of True, False, Unknown.",
+                "type": "string",
+                "enum": [
+                  "True",
+                  "False",
+                  "Unknown"
+                ]
+              },
+              "type": {
+                "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+                "type": "string",
+                "maxLength": 316,
+                "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
+              }
+            }
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "config.openshift.io",
+      "kind": "ClusterImagePolicy",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

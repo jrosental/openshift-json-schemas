@@ -1,0 +1,47 @@
+{
+  "description": "ContainerUser represents user identity information",
+  "type": "object",
+  "properties": {
+    "linux": {
+      "description": "LinuxContainerUser represents user identity information in Linux containers",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "uid",
+        "gid"
+      ],
+      "properties": {
+        "gid": {
+          "description": "GID is the primary gid initially attached to the first process in the container",
+          "type": "integer",
+          "format": "int64"
+        },
+        "supplementalGroups": {
+          "description": "SupplementalGroups are the supplemental groups initially attached to the first process in the container",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64"
+          },
+          "x-kubernetes-list-type": "atomic"
+        },
+        "uid": {
+          "description": "UID is the primary uid initially attached to the first process in the container",
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

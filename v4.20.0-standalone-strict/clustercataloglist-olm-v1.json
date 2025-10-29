@@ -1,0 +1,676 @@
+{
+  "description": "ClusterCatalogList is a list of ClusterCatalog",
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "olm.operatorframework.io/v1"
+      ]
+    },
+    "items": {
+      "description": "List of clustercatalogs. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "ClusterCatalog enables users to make File-Based Catalog (FBC) catalog data available to the cluster.\nFor more information on FBC, see https://olm.operatorframework.io/docs/reference/file-based-catalogs/#docs",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "metadata",
+          "spec"
+        ],
+        "properties": {
+          "apiVersion": {
+            "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "olm.operatorframework.io/v1"
+            ]
+          },
+          "kind": {
+            "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "ClusterCatalog"
+            ]
+          },
+          "metadata": {
+            "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+            "type": "object",
+            "properties": {
+              "annotations": {
+                "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "creationTimestamp": {
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "deletionGracePeriodSeconds": {
+                "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "deletionTimestamp": {
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "finalizers": {
+                "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "x-kubernetes-list-type": "set",
+                "x-kubernetes-patch-strategy": "merge"
+              },
+              "generateName": {
+                "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will return a 409.\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "generation": {
+                "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "labels": {
+                "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "managedFields": {
+                "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "apiVersion": {
+                      "description": "APIVersion defines the version of this resource that this field set applies to. The format is \"group/version\" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "fieldsType": {
+                      "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "fieldsV1": {
+                      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "manager": {
+                      "description": "Manager is an identifier of the workflow managing these fields.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "operation": {
+                      "description": "Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "subresource": {
+                      "description": "Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "time": {
+                      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "date-time"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "x-kubernetes-list-type": "atomic"
+              },
+              "name": {
+                "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "namespace": {
+                "description": "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ownerReferences": {
+                "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "apiVersion",
+                    "kind",
+                    "name",
+                    "uid"
+                  ],
+                  "properties": {
+                    "apiVersion": {
+                      "description": "API version of the referent.",
+                      "type": "string"
+                    },
+                    "blockOwnerDeletion": {
+                      "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "controller": {
+                      "description": "If true, this reference points to the managing controller.",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "kind": {
+                      "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+                      "type": "string"
+                    },
+                    "uid": {
+                      "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+                      "type": "string"
+                    }
+                  },
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
+                },
+                "x-kubernetes-list-map-keys": [
+                  "uid"
+                ],
+                "x-kubernetes-list-type": "map",
+                "x-kubernetes-patch-merge-key": "uid",
+                "x-kubernetes-patch-strategy": "merge"
+              },
+              "resourceVersion": {
+                "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "selfLink": {
+                "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "uid": {
+                "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "spec": {
+            "description": "spec is the desired state of the ClusterCatalog.\nspec is required.\nThe controller will work to ensure that the desired\ncatalog is unpacked and served over the catalog content HTTP server.",
+            "type": "object",
+            "required": [
+              "source"
+            ],
+            "properties": {
+              "availabilityMode": {
+                "description": "availabilityMode allows users to define how the ClusterCatalog is made available to clients on the cluster.\navailabilityMode is optional.\n\nAllowed values are \"Available\" and \"Unavailable\" and omitted.\n\nWhen omitted, the default value is \"Available\".\n\nWhen set to \"Available\", the catalog contents will be unpacked and served over the catalog content HTTP server.\nSetting the availabilityMode to \"Available\" tells clients that they should consider this ClusterCatalog\nand its contents as usable.\n\nWhen set to \"Unavailable\", the catalog contents will no longer be served over the catalog content HTTP server.\nWhen set to this availabilityMode it should be interpreted the same as the ClusterCatalog not existing.\nSetting the availabilityMode to \"Unavailable\" can be useful in scenarios where a user may not want\nto delete the ClusterCatalog all together, but would still like it to be treated as if it doesn't exist.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "Unavailable",
+                  "Available"
+                ]
+              },
+              "priority": {
+                "description": "priority allows the user to define a priority for a ClusterCatalog.\npriority is optional.\n\nA ClusterCatalog's priority is used by clients as a tie-breaker between ClusterCatalogs that meet the client's requirements.\nA higher number means higher priority.\n\nIt is up to clients to decide how to handle scenarios where multiple ClusterCatalogs with the same priority meet their requirements.\nWhen deciding how to break the tie in this scenario, it is recommended that clients prompt their users for additional input.\n\nWhen omitted, the default priority is 0 because that is the zero value of integers.\n\nNegative numbers can be used to specify a priority lower than the default.\nPositive numbers can be used to specify a priority higher than the default.\n\nThe lowest possible value is -2147483648.\nThe highest possible value is 2147483647.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32"
+              },
+              "source": {
+                "description": "source allows a user to define the source of a catalog.\nA \"catalog\" contains information on content that can be installed on a cluster.\nProviding a catalog source makes the contents of the catalog discoverable and usable by\nother on-cluster components.\nThese on-cluster components may do a variety of things with this information, such as\npresenting the content in a GUI dashboard or installing content from the catalog on the cluster.\nThe catalog source must contain catalog metadata in the File-Based Catalog (FBC) format.\nFor more information on FBC, see https://olm.operatorframework.io/docs/reference/file-based-catalogs/#docs.\nsource is a required field.\n\nBelow is a minimal example of a ClusterCatalogSpec that sources a catalog from an image:\n\n source:\n   type: Image\n   image:\n     ref: quay.io/operatorhubio/catalog:latest",
+                "type": "object",
+                "required": [
+                  "type"
+                ],
+                "properties": {
+                  "image": {
+                    "description": "image is used to configure how catalog contents are sourced from an OCI image.\nThis field is required when type is Image, and forbidden otherwise.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "ref"
+                    ],
+                    "properties": {
+                      "pollIntervalMinutes": {
+                        "description": "pollIntervalMinutes allows the user to set the interval, in minutes, at which the image source should be polled for new content.\npollIntervalMinutes is optional.\npollIntervalMinutes can not be specified when ref is a digest-based reference.\n\nWhen omitted, the image will not be polled for new content.",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 1
+                      },
+                      "ref": {
+                        "description": "ref allows users to define the reference to a container image containing Catalog contents.\nref is required.\nref can not be more than 1000 characters.\n\nA reference can be broken down into 3 parts - the domain, name, and identifier.\n\nThe domain is typically the registry where an image is located.\nIt must be alphanumeric characters (lowercase and uppercase) separated by the \".\" character.\nHyphenation is allowed, but the domain must start and end with alphanumeric characters.\nSpecifying a port to use is also allowed by adding the \":\" character followed by numeric values.\nThe port must be the last value in the domain.\nSome examples of valid domain values are \"registry.mydomain.io\", \"quay.io\", \"my-registry.io:8080\".\n\nThe name is typically the repository in the registry where an image is located.\nIt must contain lowercase alphanumeric characters separated only by the \".\", \"_\", \"__\", \"-\" characters.\nMultiple names can be concatenated with the \"/\" character.\nThe domain and name are combined using the \"/\" character.\nSome examples of valid name values are \"operatorhubio/catalog\", \"catalog\", \"my-catalog.prod\".\nAn example of the domain and name parts of a reference being combined is \"quay.io/operatorhubio/catalog\".\n\nThe identifier is typically the tag or digest for an image reference and is present at the end of the reference.\nIt starts with a separator character used to distinguish the end of the name and beginning of the identifier.\nFor a digest-based reference, the \"@\" character is the separator.\nFor a tag-based reference, the \":\" character is the separator.\nAn identifier is required in the reference.\n\nDigest-based references must contain an algorithm reference immediately after the \"@\" separator.\nThe algorithm reference must be followed by the \":\" character and an encoded string.\nThe algorithm must start with an uppercase or lowercase alpha character followed by alphanumeric characters and may contain the \"-\", \"_\", \"+\", and \".\" characters.\nSome examples of valid algorithm values are \"sha256\", \"sha256+b64u\", \"multihash+base58\".\nThe encoded string following the algorithm must be hex digits (a-f, A-F, 0-9) and must be a minimum of 32 characters.\n\nTag-based references must begin with a word character (alphanumeric + \"_\") followed by word characters or \".\", and \"-\" characters.\nThe tag must not be longer than 127 characters.\n\nAn example of a valid digest-based image reference is \"quay.io/operatorhubio/catalog@sha256:200d4ddb2a73594b91358fe6397424e975205bfbe44614f5846033cad64b3f05\"\nAn example of a valid tag-based image reference is \"quay.io/operatorhubio/catalog:latest\"",
+                        "type": "string",
+                        "maxLength": 1000,
+                        "x-kubernetes-validations": [
+                          {
+                            "message": "must start with a valid domain. valid domains must be alphanumeric characters (lowercase and uppercase) separated by the \".\" character.",
+                            "rule": "self.matches('^([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])((\\\\.([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]))+)?(:[0-9]+)?\\\\b')"
+                          },
+                          {
+                            "message": "a valid name is required. valid names must contain lowercase alphanumeric characters separated only by the \".\", \"_\", \"__\", \"-\" characters.",
+                            "rule": "self.find('(\\\\/[a-z0-9]+((([._]|__|[-]*)[a-z0-9]+)+)?((\\\\/[a-z0-9]+((([._]|__|[-]*)[a-z0-9]+)+)?)+)?)') != \"\""
+                          },
+                          {
+                            "message": "must end with a digest or a tag",
+                            "rule": "self.find('(@.*:)') != \"\" || self.find(':.*$') != \"\""
+                          },
+                          {
+                            "message": "tag is invalid. the tag must not be more than 127 characters",
+                            "rule": "self.find('(@.*:)') == \"\" ? (self.find(':.*$') != \"\" ? self.find(':.*$').substring(1).size() <= 127 : true) : true"
+                          },
+                          {
+                            "message": "tag is invalid. valid tags must begin with a word character (alphanumeric + \"_\") followed by word characters or \".\", and \"-\" characters",
+                            "rule": "self.find('(@.*:)') == \"\" ? (self.find(':.*$') != \"\" ? self.find(':.*$').matches(':[\\\\w][\\\\w.-]*$') : true) : true"
+                          },
+                          {
+                            "message": "digest algorithm is not valid. valid algorithms must start with an uppercase or lowercase alpha character followed by alphanumeric characters and may contain the \"-\", \"_\", \"+\", and \".\" characters.",
+                            "rule": "self.find('(@.*:)') != \"\" ? self.find('(@.*:)').matches('(@[A-Za-z][A-Za-z0-9]*([-_+.][A-Za-z][A-Za-z0-9]*)*[:])') : true"
+                          },
+                          {
+                            "message": "digest is not valid. the encoded string must be at least 32 characters",
+                            "rule": "self.find('(@.*:)') != \"\" ? self.find(':.*$').substring(1).size() >= 32 : true"
+                          },
+                          {
+                            "message": "digest is not valid. the encoded string must only contain hex characters (A-F, a-f, 0-9)",
+                            "rule": "self.find('(@.*:)') != \"\" ? self.find(':.*$').matches(':[0-9A-Fa-f]*$') : true"
+                          }
+                        ]
+                      }
+                    },
+                    "x-kubernetes-validations": [
+                      {
+                        "message": "cannot specify pollIntervalMinutes while using digest-based image",
+                        "rule": "self.ref.find('(@.*:)') != \"\" ? !has(self.pollIntervalMinutes) : true"
+                      }
+                    ],
+                    "additionalProperties": false
+                  },
+                  "type": {
+                    "description": "type is a reference to the type of source the catalog is sourced from.\ntype is required.\n\nThe only allowed value is \"Image\".\n\nWhen set to \"Image\", the ClusterCatalog content will be sourced from an OCI image.\nWhen using an image source, the image field must be set and must be the only field defined for this type.",
+                    "type": "string",
+                    "enum": [
+                      "Image"
+                    ]
+                  }
+                },
+                "x-kubernetes-validations": [
+                  {
+                    "message": "image is required when source type is Image, and forbidden otherwise",
+                    "rule": "has(self.type) && self.type == 'Image' ? has(self.image) : !has(self.image)"
+                  }
+                ],
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "status": {
+            "description": "status contains information about the state of the ClusterCatalog such as:\n  - Whether or not the catalog contents are being served via the catalog content HTTP server\n  - Whether or not the ClusterCatalog is progressing to a new state\n  - A reference to the source from which the catalog contents were retrieved",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "conditions": {
+                "description": "conditions is a representation of the current state for this ClusterCatalog.\n\nThe current condition types are Serving and Progressing.\n\nThe Serving condition is used to represent whether or not the contents of the catalog is being served via the HTTP(S) web server.\nWhen it has a status of True and a reason of Available, the contents of the catalog are being served.\nWhen it has a status of False and a reason of Unavailable, the contents of the catalog are not being served because the contents are not yet available.\nWhen it has a status of False and a reason of UserSpecifiedUnavailable, the contents of the catalog are not being served because the catalog has been intentionally marked as unavailable.\n\nThe Progressing condition is used to represent whether or not the ClusterCatalog is progressing or is ready to progress towards a new state.\nWhen it has a status of True and a reason of Retrying, there was an error in the progression of the ClusterCatalog that may be resolved on subsequent reconciliation attempts.\nWhen it has a status of True and a reason of Succeeded, the ClusterCatalog has successfully progressed to a new state and is ready to continue progressing.\nWhen it has a status of False and a reason of Blocked, there was an error in the progression of the ClusterCatalog that requires manual intervention for recovery.\n\nIn the case that the Serving condition is True with reason Available and Progressing is True with reason Retrying, the previously fetched\ncatalog contents are still being served via the HTTP(S) web server while we are progressing towards serving a new version of the catalog\ncontents. This could occur when we've initially fetched the latest contents from the source for this catalog and when polling for changes\nto the contents we identify that there are updates to the contents.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "Condition contains details for one aspect of the current state of this API Resource.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "lastTransitionTime",
+                    "message",
+                    "reason",
+                    "status",
+                    "type"
+                  ],
+                  "properties": {
+                    "lastTransitionTime": {
+                      "description": "lastTransitionTime is the last time the condition transitioned from one status to another.\nThis should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "message": {
+                      "description": "message is a human readable message indicating details about the transition.\nThis may be an empty string.",
+                      "type": "string",
+                      "maxLength": 32768
+                    },
+                    "observedGeneration": {
+                      "description": "observedGeneration represents the .metadata.generation that the condition was set based upon.\nFor instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date\nwith respect to the current state of the instance.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int64",
+                      "minimum": 0
+                    },
+                    "reason": {
+                      "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition.\nProducers of specific condition types may define expected values and meanings for this field,\nand whether the values are considered a guaranteed API.\nThe value should be a CamelCase string.\nThis field may not be empty.",
+                      "type": "string",
+                      "maxLength": 1024,
+                      "minLength": 1,
+                      "pattern": "^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$"
+                    },
+                    "status": {
+                      "description": "status of the condition, one of True, False, Unknown.",
+                      "type": "string",
+                      "enum": [
+                        "True",
+                        "False",
+                        "Unknown"
+                      ]
+                    },
+                    "type": {
+                      "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+                      "type": "string",
+                      "maxLength": 316,
+                      "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "x-kubernetes-list-map-keys": [
+                  "type"
+                ],
+                "x-kubernetes-list-type": "map"
+              },
+              "lastUnpacked": {
+                "description": "lastUnpacked represents the last time the contents of the\ncatalog were extracted from their source format. As an example,\nwhen using an Image source, the OCI image will be pulled and the\nimage layers written to a file-system backed cache. We refer to the\nact of this extraction from the source format as \"unpacking\".",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "resolvedSource": {
+                "description": "resolvedSource contains information about the resolved source based on the source type.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "image",
+                  "type"
+                ],
+                "properties": {
+                  "image": {
+                    "description": "image is a field containing resolution information for a catalog sourced from an image.\nThis field must be set when type is Image, and forbidden otherwise.",
+                    "type": "object",
+                    "required": [
+                      "ref"
+                    ],
+                    "properties": {
+                      "ref": {
+                        "description": "ref contains the resolved image digest-based reference.\nThe digest format is used so users can use other tooling to fetch the exact\nOCI manifests that were used to extract the catalog contents.",
+                        "type": "string",
+                        "maxLength": 1000,
+                        "x-kubernetes-validations": [
+                          {
+                            "message": "must start with a valid domain. valid domains must be alphanumeric characters (lowercase and uppercase) separated by the \".\" character.",
+                            "rule": "self.matches('^([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])((\\\\.([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]))+)?(:[0-9]+)?\\\\b')"
+                          },
+                          {
+                            "message": "a valid name is required. valid names must contain lowercase alphanumeric characters separated only by the \".\", \"_\", \"__\", \"-\" characters.",
+                            "rule": "self.find('(\\\\/[a-z0-9]+((([._]|__|[-]*)[a-z0-9]+)+)?((\\\\/[a-z0-9]+((([._]|__|[-]*)[a-z0-9]+)+)?)+)?)') != \"\""
+                          },
+                          {
+                            "message": "must end with a digest",
+                            "rule": "self.find('(@.*:)') != \"\""
+                          },
+                          {
+                            "message": "digest algorithm is not valid. valid algorithms must start with an uppercase or lowercase alpha character followed by alphanumeric characters and may contain the \"-\", \"_\", \"+\", and \".\" characters.",
+                            "rule": "self.find('(@.*:)') != \"\" ? self.find('(@.*:)').matches('(@[A-Za-z][A-Za-z0-9]*([-_+.][A-Za-z][A-Za-z0-9]*)*[:])') : true"
+                          },
+                          {
+                            "message": "digest is not valid. the encoded string must be at least 32 characters",
+                            "rule": "self.find('(@.*:)') != \"\" ? self.find(':.*$').substring(1).size() >= 32 : true"
+                          },
+                          {
+                            "message": "digest is not valid. the encoded string must only contain hex characters (A-F, a-f, 0-9)",
+                            "rule": "self.find('(@.*:)') != \"\" ? self.find(':.*$').matches(':[0-9A-Fa-f]*$') : true"
+                          }
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "type": {
+                    "description": "type is a reference to the type of source the catalog is sourced from.\ntype is required.\n\nThe only allowed value is \"Image\".\n\nWhen set to \"Image\", information about the resolved image source will be set in the 'image' field.",
+                    "type": "string",
+                    "enum": [
+                      "Image"
+                    ]
+                  }
+                },
+                "x-kubernetes-validations": [
+                  {
+                    "message": "image is required when source type is Image, and forbidden otherwise",
+                    "rule": "has(self.type) && self.type == 'Image' ? has(self.image) : !has(self.image)"
+                  }
+                ],
+                "additionalProperties": false
+              },
+              "urls": {
+                "description": "urls contains the URLs that can be used to access the catalog.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "base"
+                ],
+                "properties": {
+                  "base": {
+                    "description": "base is a cluster-internal URL that provides endpoints for\naccessing the content of the catalog.\n\nIt is expected that clients append the path for the endpoint they wish\nto access.\n\nCurrently, only a single endpoint is served and is accessible at the path\n/api/v1.\n\nThe endpoints served for the v1 API are:\n  - /all - this endpoint returns the entirety of the catalog contents in the FBC format\n\nAs the needs of users and clients of the evolve, new endpoints may be added.",
+                    "type": "string",
+                    "maxLength": 525,
+                    "x-kubernetes-validations": [
+                      {
+                        "message": "must be a valid URL",
+                        "rule": "isURL(self)"
+                      },
+                      {
+                        "message": "scheme must be either http or https",
+                        "rule": "isURL(self) ? (url(self).getScheme() == \"http\" || url(self).getScheme() == \"https\") : true"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "x-kubernetes-group-version-kind": [
+          {
+            "group": "olm.operatorframework.io",
+            "kind": "ClusterCatalog",
+            "version": "v1"
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "ClusterCatalogList"
+      ]
+    },
+    "metadata": {
+      "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "continue": {
+          "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "remainingItemCount": {
+          "description": "remainingItemCount is the number of subsequent items in the list which are not included in this list response. If the list request contained label or field selectors, then the number of remaining items is unknown and the field will be left unset and omitted during serialization. If the list is complete (either because it is not chunking or because this is the last chunk), then there are no more remaining items and this field will be left unset and omitted during serialization. Servers older than v1.15 do not set this field. The intended use of the remainingItemCount is *estimating* the size of a collection. Clients should not rely on the remainingItemCount to be set or to be exact.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "resourceVersion": {
+          "description": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selfLink": {
+          "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "olm.operatorframework.io",
+      "kind": "ClusterCatalogList",
+      "version": "v1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

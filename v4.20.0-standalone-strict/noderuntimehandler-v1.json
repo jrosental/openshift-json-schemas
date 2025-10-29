@@ -1,0 +1,39 @@
+{
+  "description": "NodeRuntimeHandler is a set of runtime handler information.",
+  "type": "object",
+  "properties": {
+    "features": {
+      "description": "NodeRuntimeHandlerFeatures is a set of features implemented by the runtime handler.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "recursiveReadOnlyMounts": {
+          "description": "RecursiveReadOnlyMounts is set to true if the runtime handler supports RecursiveReadOnlyMounts.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "userNamespaces": {
+          "description": "UserNamespaces is set to true if the runtime handler supports UserNamespaces, including for volumes.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "name": {
+      "description": "Runtime handler name. Empty for the default runtime handler.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,42 @@
+{
+  "description": "ChannelEntry defines a member of a package channel.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "deprecation": {
+      "description": "Deprecation conveys information regarding a deprecated resource.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "description": "Message is a human readable message describing the deprecation.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "name": {
+      "description": "Name is the name of the bundle for this entry.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "version": {
+      "description": "Version is the version of the bundle for this entry.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

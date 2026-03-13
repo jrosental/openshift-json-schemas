@@ -1,0 +1,113 @@
+{
+  "description": "Schema validation for the EDABackup CRD",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": "object",
+      "required": [
+        "deployment_name"
+      ],
+      "properties": {
+        "backup_pvc": {
+          "description": "Name of the backup PVC",
+          "type": "string"
+        },
+        "backup_pvc_namespace": {
+          "description": "(Deprecated) Namespace the PVC is in",
+          "type": "string"
+        },
+        "backup_resource_requirements": {
+          "description": "Resource requirements for the management pod used to create a backup",
+          "type": "object",
+          "properties": {
+            "limits": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                }
+              }
+            },
+            "requests": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "backup_storage_class": {
+          "description": "Storage class to use when creating PVC for backup",
+          "type": "string"
+        },
+        "backup_storage_requirements": {
+          "description": "Storage requirements for backup PVC (may be similar to existing postgres PVC backing up from)",
+          "type": "string"
+        },
+        "clean_backup_on_delete": {
+          "description": "Flag to indicate if backup should be deleted on PVC if EDABackup object is deleted",
+          "type": "boolean"
+        },
+        "deployment_name": {
+          "description": "Name of the deployment to be backed up",
+          "type": "string"
+        },
+        "no_log": {
+          "description": "Configure no_log for no_log tasks",
+          "type": "boolean"
+        },
+        "pg_dump_suffix": {
+          "description": "Additional parameters for the pg_dump command",
+          "type": "string"
+        },
+        "postgres_image": {
+          "description": "Registry path to the PostgreSQL container to use",
+          "type": "string"
+        },
+        "postgres_image_version": {
+          "description": "PostgreSQL container image version to use",
+          "type": "string"
+        },
+        "postgres_label_selector": {
+          "description": "Label selector used to identify postgres pod for backing up data",
+          "type": "string"
+        },
+        "set_self_labels": {
+          "description": "Maintain some of the recommended `app.kubernetes.io/*` labels on the resource (self)",
+          "type": "boolean"
+        }
+      }
+    },
+    "status": {
+      "x-kubernetes-preserve-unknown-fields": true
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "eda.ansible.com",
+      "kind": "EDABackup",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

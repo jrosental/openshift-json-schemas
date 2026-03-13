@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "toolchain.dev.openshift.com",
+      "kind": "SpaceBinding",
+      "version": "v1alpha1"
+    }
+  ],
+  "properties": {},
+  "$schema": "http://json-schema.org/schema#"
+}

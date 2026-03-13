@@ -1,0 +1,7 @@
+{
+  "description": "PackageManifestSpec defines the desired state of PackageManifest",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

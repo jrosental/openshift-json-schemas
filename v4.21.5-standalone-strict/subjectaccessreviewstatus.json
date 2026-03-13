@@ -20,6 +20,15 @@
     "reason": {
       "description": "Reason is optional.  It indicates why a request was allowed or denied.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

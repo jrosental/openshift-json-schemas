@@ -9,6 +9,15 @@
     "scaleUp": {
       "description": "scaleUp is scaling policy for scaling Up. If not set, the default value is the higher of:\n  * increase no more than 4 pods per 60 seconds\n  * double the number of pods per 60 seconds\nNo stabilization is used.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HPAScalingRules"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

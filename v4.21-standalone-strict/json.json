@@ -1,7 +1,17 @@
 {
   "description": "JSON represents any valid JSON value. These types are supported: bool, int64, float64, string, []interface{}, map[string]interface{} and nil.",
-  "properties": {},
-  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
 }

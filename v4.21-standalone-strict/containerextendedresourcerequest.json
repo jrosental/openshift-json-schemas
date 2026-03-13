@@ -18,6 +18,15 @@
     "resourceName": {
       "description": "The name of the extended resource in that container which gets backed by DRA.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

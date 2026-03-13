@@ -26,8 +26,7 @@
           "lastTransitionTime": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {}
+            "format": "date-time"
           },
           "message": {
             "description": "Message is a human readable description of the details about last transition, complementing reason.",
@@ -64,8 +63,7 @@
           "created": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {}
+            "format": "date-time"
           },
           "dockerImageReference": {
             "description": "DockerImageReference is the string that can be used to pull this image",
@@ -86,6 +84,15 @@
     "tag": {
       "description": "Tag is the tag for which the history is recorded",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

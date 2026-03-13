@@ -119,6 +119,15 @@
         "name"
       ],
       "x-kubernetes-list-type": "map"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

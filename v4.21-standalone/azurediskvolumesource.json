@@ -39,6 +39,12 @@
     "readOnly": {
       "description": "readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
       "type": "boolean"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

@@ -24,6 +24,15 @@
     "wildcardPolicy": {
       "description": "Wildcard policy is the wildcard policy that was allowed where this route is exposed.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

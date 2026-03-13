@@ -44,6 +44,15 @@
         "type": "string",
         "default": ""
       }
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-map-type": "atomic",

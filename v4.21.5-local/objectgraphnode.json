@@ -34,6 +34,9 @@
     },
     "optional": {
       "type": "boolean"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

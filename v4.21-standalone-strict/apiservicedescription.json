@@ -155,6 +155,12 @@
     },
     "version": {
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

@@ -54,6 +54,15 @@
       "description": "Total number of non-terminating pods targeted by this deployment that have the desired template spec.",
       "type": "integer",
       "format": "int32"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

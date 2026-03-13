@@ -8,6 +8,15 @@
     "ip": {
       "description": "IP is the IP address assigned to the pod",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

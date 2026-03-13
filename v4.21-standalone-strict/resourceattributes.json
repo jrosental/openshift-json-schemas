@@ -115,6 +115,15 @@
     "version": {
       "description": "Version is the API Version of the Resource.  \"*\" means all.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

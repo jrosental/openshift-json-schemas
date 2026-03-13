@@ -13,6 +13,15 @@
     "nodeSelector": {
       "description": "NodeSelector defines where the allocated resources are available. If unset, they are available everywhere.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

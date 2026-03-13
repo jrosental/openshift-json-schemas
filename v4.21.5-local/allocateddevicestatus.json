@@ -41,6 +41,15 @@
     "shareID": {
       "description": "ShareID uniquely identifies an individual allocation share of the device.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

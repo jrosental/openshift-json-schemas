@@ -27,6 +27,15 @@
     "username": {
       "description": "The name that uniquely identifies this user among all active users.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

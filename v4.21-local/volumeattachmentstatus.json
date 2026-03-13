@@ -23,6 +23,15 @@
     "detachError": {
       "description": "detachError represents the last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.VolumeError"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

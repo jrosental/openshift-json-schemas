@@ -7,6 +7,15 @@
     },
     "matchVolume": {
       "$ref": "_definitions.json#/definitions/v1.FeatureState"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

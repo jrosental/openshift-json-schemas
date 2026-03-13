@@ -13,6 +13,15 @@
     "metric": {
       "description": "metric identifies the target metric by name and selector",
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricIdentifier"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

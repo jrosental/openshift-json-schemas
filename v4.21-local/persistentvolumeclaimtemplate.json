@@ -12,6 +12,12 @@
     "spec": {
       "description": "The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimSpec"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
     }
   },
   "$schema": "http://json-schema.org/schema#"

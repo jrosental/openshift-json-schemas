@@ -24,6 +24,15 @@
         "default": ""
       },
       "x-kubernetes-list-type": "atomic"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

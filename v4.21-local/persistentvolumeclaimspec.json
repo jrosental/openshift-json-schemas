@@ -51,6 +51,15 @@
     "volumeName": {
       "description": "volumeName is the binding reference to the PersistentVolume backing this claim.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

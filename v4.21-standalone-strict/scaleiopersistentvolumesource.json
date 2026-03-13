@@ -58,6 +58,15 @@
     "volumeName": {
       "description": "volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

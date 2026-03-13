@@ -323,6 +323,15 @@
         ]
       },
       "x-kubernetes-list-type": "set"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

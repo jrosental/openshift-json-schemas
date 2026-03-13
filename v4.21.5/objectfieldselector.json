@@ -12,6 +12,12 @@
     "fieldPath": {
       "description": "Path of the field to select in the specified API version.",
       "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-map-type": "atomic",

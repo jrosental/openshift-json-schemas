@@ -2,7 +2,17 @@
   "description": "MicroTime is version of Time with microsecond level precision.",
   "type": "string",
   "format": "date-time",
-  "properties": {},
+  "$schema": "http://json-schema.org/schema#",
   "additionalProperties": false,
-  "$schema": "http://json-schema.org/schema#"
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
 }

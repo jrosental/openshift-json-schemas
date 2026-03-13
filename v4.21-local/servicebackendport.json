@@ -10,6 +10,15 @@
       "description": "number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with \"Name\".",
       "type": "integer",
       "format": "int32"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-map-type": "atomic",

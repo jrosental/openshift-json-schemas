@@ -11,6 +11,15 @@
     "name": {
       "type": "string",
       "default": ""
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

@@ -79,6 +79,15 @@
     "username": {
       "description": "username contains the name of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

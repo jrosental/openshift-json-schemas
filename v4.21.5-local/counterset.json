@@ -16,6 +16,15 @@
     "name": {
       "description": "Name defines the name of the counter set. It must be a DNS label.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

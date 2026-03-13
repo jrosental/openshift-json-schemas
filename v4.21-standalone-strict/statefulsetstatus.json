@@ -29,9 +29,7 @@
           "lastTransitionTime": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {},
-            "additionalProperties": false
+            "format": "date-time"
           },
           "message": {
             "description": "A human readable message indicating details about the transition.",
@@ -91,6 +89,15 @@
       "description": "updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.",
       "type": "integer",
       "format": "int32"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

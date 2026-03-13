@@ -16,6 +16,15 @@
     "template": {
       "description": "template is a full copy of the template for instantiation.",
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.Template"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

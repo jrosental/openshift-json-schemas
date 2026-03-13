@@ -19,6 +19,15 @@
       "items": {
         "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.TagImageHook"
       }
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

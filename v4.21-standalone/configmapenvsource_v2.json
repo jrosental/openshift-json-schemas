@@ -9,6 +9,15 @@
     "optional": {
       "description": "Specify whether the ConfigMap must be defined",
       "type": "boolean"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

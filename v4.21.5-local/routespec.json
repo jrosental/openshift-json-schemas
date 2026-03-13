@@ -43,6 +43,15 @@
     "wildcardPolicy": {
       "description": "Wildcard policy if any for the route. Currently only 'Subdomain' or 'None' is allowed.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

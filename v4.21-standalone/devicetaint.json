@@ -21,12 +21,20 @@
     "timeAdded": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "type": "string",
-      "format": "date-time",
-      "properties": {}
+      "format": "date-time"
     },
     "value": {
       "description": "The taint value corresponding to the taint key. Must be a label value.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

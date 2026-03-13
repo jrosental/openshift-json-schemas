@@ -38,6 +38,15 @@
     "resourceClaimName": {
       "description": "ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

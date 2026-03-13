@@ -17,6 +17,15 @@
     "secretKeyRef": {
       "description": "Selects a key of a secret in the pod's namespace",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector_v2"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

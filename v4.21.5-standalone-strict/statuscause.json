@@ -13,6 +13,15 @@
     "reason": {
       "description": "A machine-readable description of the cause of the error. If this value is empty there is no information available.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

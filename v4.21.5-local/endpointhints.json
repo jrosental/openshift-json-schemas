@@ -17,6 +17,15 @@
         "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1.ForZone"
       },
       "x-kubernetes-list-type": "atomic"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

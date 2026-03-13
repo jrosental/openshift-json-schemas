@@ -9,6 +9,9 @@
     "kind": {
       "description": "Kind is the API kind the resources belong to. Required.",
       "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-map-type": "atomic",

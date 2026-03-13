@@ -45,6 +45,9 @@
         "type": "string"
       },
       "x-kubernetes-list-type": "atomic"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-group-version-kind": [

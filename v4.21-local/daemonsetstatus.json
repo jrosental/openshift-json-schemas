@@ -65,6 +65,15 @@
       "description": "The total number of nodes that are running updated daemon pod",
       "type": "integer",
       "format": "int32"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

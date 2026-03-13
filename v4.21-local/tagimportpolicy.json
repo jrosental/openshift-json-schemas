@@ -13,6 +13,15 @@
     "scheduled": {
       "description": "Scheduled indicates to the server that this tag should be periodically checked to ensure it is up to date, and imported",
       "type": "boolean"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

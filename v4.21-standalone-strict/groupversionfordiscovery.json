@@ -13,6 +13,15 @@
     "version": {
       "description": "version specifies the version in the form of \"version\". This is to save the clients the trouble of splitting the GroupVersion.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

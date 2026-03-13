@@ -16,6 +16,15 @@
       "description": "lastVersion is used to inform about number of last triggered build.",
       "type": "integer",
       "format": "int64"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

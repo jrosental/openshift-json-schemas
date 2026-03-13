@@ -29,16 +29,12 @@
           "lastTransitionTime": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {},
-            "additionalProperties": false
+            "format": "date-time"
           },
           "lastUpdateTime": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {},
-            "additionalProperties": false
+            "format": "date-time"
           },
           "message": {
             "description": "A human readable message indicating details about the transition.",
@@ -169,6 +165,15 @@
       "description": "UpdatedReplicas is the total number of non-terminated pods targeted by this deployment config that have the desired template spec.",
       "type": "integer",
       "format": "int32"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

@@ -87,6 +87,15 @@
     "version": {
       "description": "Version is the CSV's semantic version",
       "$ref": "_definitions.json#/definitions/com.github.operator-framework.api.pkg.lib.version.OperatorVersion"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

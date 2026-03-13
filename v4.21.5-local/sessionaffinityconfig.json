@@ -5,6 +5,15 @@
     "clientIP": {
       "description": "clientIP contains the configurations of Client IP based session affinity.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ClientIPConfig"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

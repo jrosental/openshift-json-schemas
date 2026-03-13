@@ -38,6 +38,15 @@
     "optional": {
       "description": "optional specify whether the ConfigMap or its keys must be defined",
       "type": "boolean"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

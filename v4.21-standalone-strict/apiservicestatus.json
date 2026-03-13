@@ -16,9 +16,7 @@
           "lastTransitionTime": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {},
-            "additionalProperties": false
+            "format": "date-time"
           },
           "message": {
             "description": "Human-readable message indicating details about last transition.",
@@ -45,6 +43,15 @@
       "x-kubernetes-list-type": "map",
       "x-kubernetes-patch-merge-key": "type",
       "x-kubernetes-patch-strategy": "merge"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

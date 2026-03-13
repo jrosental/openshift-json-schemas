@@ -5,6 +5,15 @@
     "devices": {
       "description": "Devices defines how to request devices.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1.DeviceClaim"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

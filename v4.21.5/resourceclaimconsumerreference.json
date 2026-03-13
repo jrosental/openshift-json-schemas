@@ -22,6 +22,15 @@
     "uid": {
       "description": "UID identifies exactly one incarnation of the resource.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

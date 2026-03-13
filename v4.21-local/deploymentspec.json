@@ -42,6 +42,15 @@
     "template": {
       "description": "Template describes the pods that will be created. The only allowed template.spec.restartPolicy value is \"Always\".",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

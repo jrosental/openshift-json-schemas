@@ -815,8 +815,7 @@
               "version": {
                 "description": "OperatorVersion is a wrapper around semver.Version which supports correct marshaling to YAML and JSON.",
                 "type": "string",
-                "format": "semver",
-                "properties": {}
+                "format": "semver"
               }
             }
           },
@@ -907,6 +906,15 @@
           "type": "string"
         }
       }
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

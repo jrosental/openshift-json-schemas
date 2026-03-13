@@ -45,6 +45,15 @@
     "paused": {
       "description": "paused is true if this trigger is temporarily disabled. Optional.",
       "type": "boolean"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

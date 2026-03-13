@@ -64,6 +64,15 @@
     "secret": {
       "description": "Secret is the obfuscated webhook secret that triggered a build.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

@@ -21,6 +21,15 @@
     "typeChecking": {
       "description": "The results of type checking for each expression. Presence of this field indicates the completion of the type checking.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1.TypeChecking"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

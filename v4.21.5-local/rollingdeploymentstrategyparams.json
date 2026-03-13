@@ -32,6 +32,15 @@
       "description": "UpdatePeriodSeconds is the time to wait between individual pod updates. If the value is nil, a default will be used.",
       "type": "integer",
       "format": "int64"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

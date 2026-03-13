@@ -12,6 +12,15 @@
     "type": {
       "description": "Type of the trigger that resulted in the creation of a new deployment",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

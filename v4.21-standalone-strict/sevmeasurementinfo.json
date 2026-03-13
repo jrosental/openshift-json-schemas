@@ -37,6 +37,9 @@
       "description": "Policy of the SEV guest.",
       "type": "integer",
       "format": "int32"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

@@ -50,6 +50,15 @@
       "type": "integer",
       "format": "int32",
       "default": 0
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

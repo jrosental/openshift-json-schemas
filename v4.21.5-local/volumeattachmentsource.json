@@ -9,6 +9,15 @@
     "persistentVolumeName": {
       "description": "persistentVolumeName represents the name of the persistent volume to attach.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

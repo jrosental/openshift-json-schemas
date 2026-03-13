@@ -12,6 +12,15 @@
       "description": "Name of both the DataVolume and the PVC in the same namespace.",
       "type": "string",
       "default": ""
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

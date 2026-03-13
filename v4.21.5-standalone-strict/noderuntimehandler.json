@@ -20,6 +20,15 @@
     "name": {
       "description": "Runtime handler name. Empty for the default runtime handler.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

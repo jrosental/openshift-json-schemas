@@ -20,6 +20,9 @@
     "status": {
       "description": "Status is completed by the server to tell which permissions you have",
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SubjectRulesReviewStatus"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-group-version-kind": [

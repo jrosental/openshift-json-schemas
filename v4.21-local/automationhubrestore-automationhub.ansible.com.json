@@ -1,0 +1,145 @@
+{
+  "description": "Schema validation for the GalaxyRestore CRD",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": "object",
+      "properties": {
+        "backup_dir": {
+          "description": "Backup directory name, set as a status found on the backup object (backupDirectory)",
+          "type": "string"
+        },
+        "backup_name": {
+          "description": "Name of the backup custom resource",
+          "type": "string"
+        },
+        "backup_pvc": {
+          "description": "Name of the PVC to be restored from, set as a status found on the backup object (backupClaim)",
+          "type": "string"
+        },
+        "backup_pvc_namespace": {
+          "description": "Namespace the PVC is in (Deprecated)",
+          "type": "string"
+        },
+        "backup_source": {
+          "description": "backup source",
+          "type": "string",
+          "enum": [
+            "CR",
+            "PVC"
+          ]
+        },
+        "deployment_name": {
+          "description": "Name of the deployment to be restored to",
+          "type": "string"
+        },
+        "force_drop_db": {
+          "description": "Force drop the database of the new Galaxy before restoring. USE WITH CAUTION!",
+          "type": "boolean"
+        },
+        "no_log": {
+          "description": "Configure no_log (hides sensitive information in operator/task logs)",
+          "type": "boolean"
+        },
+        "postgres_label_selector": {
+          "description": "Label selector used to identify postgres pod for executing migration",
+          "type": "string"
+        },
+        "restore_resource_requirements": {
+          "description": "Resource requirements for the management pod used to do a restore",
+          "type": "object",
+          "properties": {
+            "limits": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                }
+              }
+            },
+            "requests": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "spec_overrides": {
+          "description": "Overrides for the Galaxy spec",
+          "x-kubernetes-preserve-unknown-fields": true
+        },
+        "storage_type": {
+          "description": "Configuration for the storage type utilized in the backup",
+          "type": "string",
+          "enum": [
+            "file",
+            "File",
+            "s3",
+            "S3",
+            "azure",
+            "Azure"
+          ]
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "description": "The resulting conditions when a Service Telemetry is instantiated",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "lastTransitionTime": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "restoreComplete": {
+          "description": "The state of the restore",
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "automationhub.ansible.com",
+      "kind": "AutomationHubRestore",
+      "version": "v1beta1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

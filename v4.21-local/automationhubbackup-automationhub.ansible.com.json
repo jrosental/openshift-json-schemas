@@ -1,0 +1,156 @@
+{
+  "description": "Schema validation for the GalaxyBackup CRD",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": "object",
+      "required": [
+        "deployment_name"
+      ],
+      "properties": {
+        "backup_pvc": {
+          "description": "Name of the PVC to be used for storing the backup",
+          "type": "string"
+        },
+        "backup_pvc_namespace": {
+          "description": "Namespace PVC is in (Deprecated)",
+          "type": "string"
+        },
+        "backup_resource_requirements": {
+          "description": "Resource requirements for the management pod used to create a backup",
+          "type": "object",
+          "properties": {
+            "limits": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                }
+              }
+            },
+            "requests": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "backup_storage_class": {
+          "description": "Storage class to use when creating PVC for backup",
+          "type": "string"
+        },
+        "backup_storage_requirements": {
+          "description": "Storage requirements for the backup",
+          "type": "string"
+        },
+        "deployment_name": {
+          "description": "Name of the deployment to be backed up",
+          "type": "string"
+        },
+        "no_log": {
+          "description": "Configure no_log (hides sensitive information in operator/task logs)",
+          "type": "boolean"
+        },
+        "postgres_label_selector": {
+          "description": "Label selector used to identify postgres pod for executing migration",
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "adminPasswordSecret": {
+          "description": "Administrator password secret used by the deployed instance",
+          "type": "string"
+        },
+        "backupClaim": {
+          "description": "The PVC name used for the backup",
+          "type": "string"
+        },
+        "backupDirectory": {
+          "description": "The directory data is backed up to on the PVC",
+          "type": "string"
+        },
+        "backupNamespace": {
+          "description": "The namespace used for the backup claim",
+          "type": "string"
+        },
+        "conditions": {
+          "description": "The resulting conditions when a Service Telemetry is instantiated",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "lastTransitionTime": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "containerTokenSecret": {
+          "description": "Container token configuration secret used by the deployed instance",
+          "type": "string"
+        },
+        "databaseConfigurationSecret": {
+          "description": "Database configuration secret used by the deployed instance",
+          "type": "string"
+        },
+        "dbFieldsEncryptionSecret": {
+          "description": "DB fields encryption configuration secret used by deployed instance",
+          "type": "string"
+        },
+        "deploymentName": {
+          "description": "Name of the deployment backed up",
+          "type": "string"
+        },
+        "deploymentStorageType": {
+          "description": "The deployment storage type",
+          "type": "string"
+        },
+        "storageSecret": {
+          "description": "Objectstorage configuration secret used by the deployed instance",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "automationhub.ansible.com",
+      "kind": "AutomationHubBackup",
+      "version": "v1beta1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "MicroTime is version of Time with microsecond level precision.",
+  "type": "string",
+  "format": "date-time",
+  "properties": {},
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

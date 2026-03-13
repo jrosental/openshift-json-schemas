@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "operator.tekton.dev",
+      "kind": "OpenShiftPipelinesAsCode",
+      "version": "v1alpha1"
+    }
+  ],
+  "properties": {},
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

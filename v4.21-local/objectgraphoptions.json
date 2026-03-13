@@ -1,0 +1,24 @@
+{
+  "description": "ObjectGraphOptions holds options for the object graph.",
+  "type": "object",
+  "properties": {
+    "includeOptionalNodes": {
+      "description": "IncludeOptionalNodes indicates whether to include optional nodes in the graph. True by default.",
+      "type": "boolean"
+    },
+    "labelSelector": {
+      "description": "LabelSelector is used to filter nodes in the graph based on their labels.",
+      "$ref": "_definitions.json#/definitions/k8s.io.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

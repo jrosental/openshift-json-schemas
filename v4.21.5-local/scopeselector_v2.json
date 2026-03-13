@@ -1,0 +1,24 @@
+{
+  "description": "A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.",
+  "type": "object",
+  "properties": {
+    "matchExpressions": {
+      "description": "A list of scope selector requirements by scope of the resources.",
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScopedResourceSelectorRequirement_v2"
+      }
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "x-kubernetes-map-type": "atomic",
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,16 @@
+{
+  "description": "PackageManifestSpec defines the desired state of PackageManifest",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

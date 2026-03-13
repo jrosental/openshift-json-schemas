@@ -1,0 +1,33 @@
+{
+  "description": "Adds and removes POSIX capabilities from running containers.",
+  "type": "object",
+  "properties": {
+    "add": {
+      "description": "Added capabilities",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "drop": {
+      "description": "Removed capabilities",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

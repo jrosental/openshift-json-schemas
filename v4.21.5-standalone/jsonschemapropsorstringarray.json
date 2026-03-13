@@ -1,0 +1,16 @@
+{
+  "description": "JSONSchemaPropsOrStringArray represents a JSONSchemaProps or a string array.",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

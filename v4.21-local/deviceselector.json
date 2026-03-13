@@ -1,0 +1,20 @@
+{
+  "description": "DeviceSelector must have exactly one field set.",
+  "type": "object",
+  "properties": {
+    "cel": {
+      "description": "CEL contains a CEL expression for selecting a device.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1.CELDeviceSelector"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

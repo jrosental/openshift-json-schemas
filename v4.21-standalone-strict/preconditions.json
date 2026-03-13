@@ -1,0 +1,25 @@
+{
+  "description": "Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.",
+  "type": "object",
+  "properties": {
+    "resourceVersion": {
+      "description": "Specifies the target ResourceVersion",
+      "type": "string"
+    },
+    "uid": {
+      "description": "Specifies the target UID.",
+      "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

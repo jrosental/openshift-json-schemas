@@ -1,0 +1,24 @@
+{
+  "description": "HostIP represents a single IP address allocated to the host.",
+  "type": "object",
+  "required": [
+    "ip"
+  ],
+  "properties": {
+    "ip": {
+      "description": "IP is the IP address assigned to the host",
+      "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

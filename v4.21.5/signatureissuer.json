@@ -1,0 +1,24 @@
+{
+  "description": "SignatureIssuer holds information about an issuer of signing certificate or key.",
+  "type": "object",
+  "properties": {
+    "commonName": {
+      "description": "Common name (e.g. openshift-signing-service).",
+      "type": "string"
+    },
+    "organization": {
+      "description": "Organization name.",
+      "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

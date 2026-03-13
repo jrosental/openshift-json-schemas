@@ -1,0 +1,987 @@
+{
+  "description": "Schema validation for the Galaxy CRD",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": "object",
+      "properties": {
+        "admin_password_secret": {
+          "description": "Secret where the administrator password can be found",
+          "type": "string"
+        },
+        "affinity": {
+          "description": "Defines various deployment affinities",
+          "type": "object",
+          "properties": {
+            "node_affinity": {
+              "description": "Defines the node affinity for the deployment",
+              "x-kubernetes-preserve-unknown-fields": true
+            }
+          }
+        },
+        "api": {
+          "description": "The galaxy api deployment.",
+          "type": "object",
+          "properties": {
+            "log_level": {
+              "description": "The log level for the deployment.",
+              "type": "string",
+              "enum": [
+                "DEBUG",
+                "INFO",
+                "WARNING",
+                "ERROR",
+                "CRITICAL"
+              ]
+            },
+            "replicas": {
+              "description": "The number of replicas for the deployment.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "resource_requirements": {
+              "description": "Resource requirements for the galaxy api container",
+              "type": "object",
+              "properties": {
+                "limits": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "requests": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "strategy": {
+              "description": "The deployment strategy to use to replace existing pods with new ones.",
+              "type": "object",
+              "properties": {
+                "rollingUpdate": {
+                  "description": "Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate. --- TODO: Update this to follow our convention for oneOf, whatever we decide it to be.",
+                  "type": "object",
+                  "properties": {
+                    "maxSurge": {
+                      "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    },
+                    "maxUnavailable": {
+                      "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    }
+                  }
+                },
+                "type": {
+                  "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "bundle_cacert_secret": {
+          "description": "Secret where the trusted Certificate Authority Bundle is stored",
+          "type": "string"
+        },
+        "container_token_secret": {
+          "description": "Secret where the container token certificates are stored",
+          "type": "string"
+        },
+        "content": {
+          "description": "The galaxy content deployment.",
+          "type": "object",
+          "properties": {
+            "log_level": {
+              "description": "The log level for the deployment.",
+              "type": "string",
+              "enum": [
+                "DEBUG",
+                "INFO",
+                "WARNING",
+                "ERROR",
+                "CRITICAL"
+              ]
+            },
+            "replicas": {
+              "description": "The number of replicas for the deployment.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "resource_requirements": {
+              "description": "Resource requirements for the galaxy content container",
+              "type": "object",
+              "properties": {
+                "limits": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "requests": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "strategy": {
+              "description": "The deployment strategy to use to replace existing pods with new ones.",
+              "type": "object",
+              "properties": {
+                "rollingUpdate": {
+                  "description": "Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate. --- TODO: Update this to follow our convention for oneOf, whatever we decide it to be.",
+                  "type": "object",
+                  "properties": {
+                    "maxSurge": {
+                      "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    },
+                    "maxUnavailable": {
+                      "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    }
+                  }
+                },
+                "type": {
+                  "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "db_fields_encryption_secret": {
+          "description": "Secret where the Fernet symmetric encryption key is stored",
+          "type": "string"
+        },
+        "deployment_type": {
+          "description": "Name of the deployment type",
+          "type": "string"
+        },
+        "file_storage_access_mode": {
+          "description": "The file storage access mode.",
+          "type": "string",
+          "enum": [
+            "ReadWriteMany",
+            "ReadWriteOnce"
+          ]
+        },
+        "file_storage_size": {
+          "description": "The size of the file storage; for example 100Gi.",
+          "type": "string"
+        },
+        "file_storage_storage_class": {
+          "description": "Storage class to use for the file persistentVolumeClaim",
+          "type": "string"
+        },
+        "force_drop_db": {
+          "description": "(Deprecated) Force drop the database of the new Galaxy before restoring. USE WITH CAUTION!",
+          "type": "boolean"
+        },
+        "gunicorn_api_workers": {
+          "description": "The number of gunicorn workers to use for the api.",
+          "type": "integer"
+        },
+        "gunicorn_content_workers": {
+          "description": "The number of gunicorn workers to use for the content.",
+          "type": "integer"
+        },
+        "gunicorn_timeout": {
+          "description": "The timeout for the gunicorn process.",
+          "type": "integer"
+        },
+        "haproxy_timeout": {
+          "description": "HAProxy timeout",
+          "type": "string"
+        },
+        "hostname": {
+          "description": "The hostname of the instance",
+          "type": "string"
+        },
+        "idle_deployment": {
+          "description": "Scale down deployments to put Galaxy into an idle state",
+          "type": "boolean"
+        },
+        "image": {
+          "description": "The image name (repo name) for the galaxy image.",
+          "type": "string"
+        },
+        "image_pull_policy": {
+          "description": "Image pull policy for container image",
+          "type": "string",
+          "enum": [
+            "IfNotPresent",
+            "Always",
+            "Never"
+          ]
+        },
+        "image_pull_secret": {
+          "description": "The image pull secret (deprecated. Use image_pull_secrets instead)",
+          "type": "string"
+        },
+        "image_pull_secrets": {
+          "description": "The image pull secrets",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "image_version": {
+          "description": "The image version for the galaxy image.",
+          "type": "string"
+        },
+        "image_web": {
+          "description": "The image name (repo name) for the galaxy-ui webserver image.",
+          "type": "string"
+        },
+        "image_web_version": {
+          "description": "The image version for the galaxy-ui webserver image.",
+          "type": "string"
+        },
+        "ingress_annotations": {
+          "description": "Annotations to add to the ingress",
+          "type": "string"
+        },
+        "ingress_class_name": {
+          "description": "The name of ingress class to use instead of the cluster default.",
+          "type": "string"
+        },
+        "ingress_tls_secret": {
+          "description": "Secret where the ingress TLS secret can be found",
+          "type": "string"
+        },
+        "ingress_type": {
+          "description": "The ingress type to use to reach the deployed instance",
+          "type": "string",
+          "enum": [
+            "none",
+            "Ingress",
+            "ingress",
+            "Route",
+            "route",
+            "LoadBalancer",
+            "loadbalancer",
+            "NodePort",
+            "nodeport"
+          ]
+        },
+        "loadbalancer_port": {
+          "description": "Port to use for the loadbalancer",
+          "type": "integer"
+        },
+        "loadbalancer_protocol": {
+          "description": "Protocol to use for the loadbalancer",
+          "type": "string",
+          "enum": [
+            "http",
+            "https"
+          ]
+        },
+        "nginx_client_max_body_size": {
+          "description": "NGINX client max body size",
+          "type": "string"
+        },
+        "nginx_proxy_connect_timeout": {
+          "description": "NGINX proxy connect timeout",
+          "type": "string"
+        },
+        "nginx_proxy_read_timeout": {
+          "description": "NGINX proxy read timeout",
+          "type": "string"
+        },
+        "nginx_proxy_send_timeout": {
+          "description": "NGINX proxy send timeout",
+          "type": "string"
+        },
+        "no_log": {
+          "description": "Configure no_log for no_log tasks",
+          "type": "boolean"
+        },
+        "node_selector": {
+          "description": "nodeSelector for the Galaxy pods",
+          "type": "string"
+        },
+        "nodeport_port": {
+          "description": "Provide requested port value",
+          "type": "string"
+        },
+        "object_storage_azure_secret": {
+          "description": "The secret for Azure blob storage configuration.",
+          "type": "string"
+        },
+        "object_storage_s3_secret": {
+          "description": "The secret for S3 compliant object storage configuration.",
+          "type": "string"
+        },
+        "postgres_configuration_secret": {
+          "description": "Secret where the database configuration can be found",
+          "type": "string"
+        },
+        "postgres_data_volume_init": {
+          "description": "Sets permissions on the /var/lib/pgdata/data for postgres container using an init container (not Openshift)",
+          "type": "boolean"
+        },
+        "postgres_extra_args": {
+          "description": "(Deprecated, use postgres_extra_settings parameter) Define postgres configuration arguments to use",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "postgres_extra_settings": {
+          "description": "PostgreSQL configuration settings to be added to postgresql.conf",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "setting",
+              "value"
+            ],
+            "properties": {
+              "setting": {
+                "description": "PostgreSQL configuration parameter name",
+                "type": "string"
+              },
+              "value": {
+                "description": "PostgreSQL configuration parameter value",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "postgres_host_auth_method": {
+          "description": "The method to be used for database host authentication",
+          "type": "string"
+        },
+        "postgres_image": {
+          "description": "Registry path to the PostgreSQL container to use",
+          "type": "string"
+        },
+        "postgres_init_container_commands": {
+          "description": "Customize the postgres init container commands (Non Openshift)",
+          "type": "string"
+        },
+        "postgres_initdb_args": {
+          "description": "The arguments to be passed to initialize the database",
+          "type": "string"
+        },
+        "postgres_keep_pvc_after_upgrade": {
+          "description": "Specify whether or not to keep the old PVC after PostgreSQL upgrades",
+          "type": "boolean"
+        },
+        "postgres_label_selector": {
+          "description": "Label selector used to identify postgres pod for executing migration",
+          "type": "string"
+        },
+        "postgres_migrant_configuration_secret": {
+          "description": "Secret where the old database configuration can be found for data migration",
+          "type": "string"
+        },
+        "postgres_resource_requirements": {
+          "description": "Resource requirements for the PostgreSQL container",
+          "type": "object",
+          "properties": {
+            "limits": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                }
+              }
+            },
+            "requests": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "postgres_selector": {
+          "description": "nodeSelector for the Postgres pods",
+          "type": "string"
+        },
+        "postgres_storage_class": {
+          "description": "Storage class to use for the PostgreSQL PVC",
+          "type": "string"
+        },
+        "postgres_storage_requirements": {
+          "description": "Storage requirements for the PostgreSQL container",
+          "type": "object",
+          "properties": {
+            "limits": {
+              "type": "object",
+              "properties": {
+                "storage": {
+                  "type": "string"
+                }
+              }
+            },
+            "requests": {
+              "type": "object",
+              "properties": {
+                "storage": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "postgres_tolerations": {
+          "description": "node tolerations for the Postgres pods",
+          "type": "string"
+        },
+        "public_base_url": {
+          "description": "Public base URL",
+          "type": "string"
+        },
+        "pulp_settings": {
+          "description": "The pulp settings.",
+          "x-kubernetes-preserve-unknown-fields": true
+        },
+        "redis": {
+          "description": "The galaxy redis deployment.",
+          "type": "object",
+          "properties": {
+            "log_level": {
+              "description": "The log level for the deployment.",
+              "type": "string",
+              "enum": [
+                "DEBUG",
+                "INFO",
+                "WARNING",
+                "ERROR",
+                "CRITICAL"
+              ]
+            },
+            "replicas": {
+              "description": "(Deprecated) The number of replicas for redis is 1",
+              "type": "integer",
+              "format": "int32",
+              "maximum": 1
+            },
+            "resource_requirements": {
+              "description": "Resource requirements for the galaxy redis container",
+              "type": "object",
+              "properties": {
+                "limits": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "requests": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "strategy": {
+              "description": "The deployment strategy to use to replace existing pods with new ones.",
+              "type": "object",
+              "properties": {
+                "rollingUpdate": {
+                  "description": "Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate. --- TODO: Update this to follow our convention for oneOf, whatever we decide it to be.",
+                  "type": "object",
+                  "properties": {
+                    "maxSurge": {
+                      "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    },
+                    "maxUnavailable": {
+                      "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    }
+                  }
+                },
+                "type": {
+                  "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "redis_data_persistence": {
+          "description": "Specify whether or not to have a redis pvc",
+          "type": "boolean"
+        },
+        "redis_image": {
+          "description": "The image name for the redis image.",
+          "type": "string"
+        },
+        "redis_resource_requirements": {
+          "description": "(Deprecated, use redis.resource_requirements instead) Resource requirements for the Redis container",
+          "type": "object",
+          "properties": {
+            "limits": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                },
+                "storage": {
+                  "type": "string"
+                }
+              }
+            },
+            "requests": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                },
+                "storage": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "redis_storage_class": {
+          "description": "Storage class to use for the Redis PVC",
+          "type": "string"
+        },
+        "redis_storage_size": {
+          "description": "Storage size to use for the Redis PVC",
+          "type": "string"
+        },
+        "resource_manager": {
+          "description": "The galaxy resource manager deployment.",
+          "type": "object",
+          "properties": {
+            "replicas": {
+              "description": "The number of replicas for the deployment.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "resource_requirements": {
+              "description": "Resource requirements for the galaxy resource manager container",
+              "type": "object",
+              "properties": {
+                "limits": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "requests": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "strategy": {
+              "description": "The deployment strategy to use to replace existing pods with new ones.",
+              "type": "object",
+              "properties": {
+                "rollingUpdate": {
+                  "description": "Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate. --- TODO: Update this to follow our convention for oneOf, whatever we decide it to be.",
+                  "type": "object",
+                  "properties": {
+                    "maxSurge": {
+                      "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    },
+                    "maxUnavailable": {
+                      "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    }
+                  }
+                },
+                "type": {
+                  "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "route_host": {
+          "description": "The DNS to use to points to the instance",
+          "type": "string"
+        },
+        "route_tls_secret": {
+          "description": "Secret where the TLS related credentials are stored",
+          "type": "string"
+        },
+        "route_tls_termination_mechanism": {
+          "description": "The secure TLS termination mechanism to use",
+          "type": "string",
+          "enum": [
+            "Edge",
+            "edge",
+            "Passthrough",
+            "passthrough"
+          ]
+        },
+        "service_annotations": {
+          "description": "Annotations to add to the service",
+          "type": "string"
+        },
+        "signing_scripts_configmap": {
+          "description": "ConfigMap where the signing scripts are stored",
+          "type": "string"
+        },
+        "signing_secret": {
+          "description": "Secret where the signing certificates are stored",
+          "type": "string"
+        },
+        "sso_secret": {
+          "description": "Secret where Single Sign-on configuration can be found",
+          "type": "string"
+        },
+        "storage_type": {
+          "description": "Configuration for the storage type to be utilized",
+          "type": "string",
+          "enum": [
+            "file",
+            "File",
+            "s3",
+            "S3",
+            "azure",
+            "Azure"
+          ]
+        },
+        "tolerations": {
+          "description": "node tolerations for the Galaxy pods",
+          "type": "string"
+        },
+        "topology_spread_constraints": {
+          "description": "topology rule(s) for the pods",
+          "type": "string"
+        },
+        "web": {
+          "description": "The galaxy web deployment.",
+          "type": "object",
+          "properties": {
+            "replicas": {
+              "description": "The number of replicas for the deployment.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "resource_requirements": {
+              "description": "Resource requirements for the galaxy web container",
+              "type": "object",
+              "properties": {
+                "limits": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "requests": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "strategy": {
+              "description": "The deployment strategy to use to replace existing pods with new ones.",
+              "type": "object",
+              "properties": {
+                "rollingUpdate": {
+                  "description": "Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate. --- TODO: Update this to follow our convention for oneOf, whatever we decide it to be.",
+                  "type": "object",
+                  "properties": {
+                    "maxSurge": {
+                      "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    },
+                    "maxUnavailable": {
+                      "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    }
+                  }
+                },
+                "type": {
+                  "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "worker": {
+          "description": "The galaxy worker deployment.",
+          "type": "object",
+          "properties": {
+            "replicas": {
+              "description": "The number of replicas for the deployment.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "resource_requirements": {
+              "description": "Resource requirements for the galaxy worker container",
+              "type": "object",
+              "properties": {
+                "limits": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "requests": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "string"
+                    },
+                    "memory": {
+                      "type": "string"
+                    },
+                    "storage": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "strategy": {
+              "description": "The deployment strategy to use to replace existing pods with new ones.",
+              "type": "object",
+              "properties": {
+                "rollingUpdate": {
+                  "description": "Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate. --- TODO: Update this to follow our convention for oneOf, whatever we decide it to be.",
+                  "type": "object",
+                  "properties": {
+                    "maxSurge": {
+                      "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    },
+                    "maxUnavailable": {
+                      "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.",
+                      "x-kubernetes-int-or-string": true
+                    }
+                  }
+                },
+                "type": {
+                  "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "adminPasswordSecret": {
+          "description": "Admin password of the deployed instance",
+          "type": "string"
+        },
+        "conditions": {
+          "description": "The resulting conditions when a Service Telemetry is instantiated",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "lastTransitionTime": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "containerTokenSecret": {
+          "description": "The name of the secret used for container token authentication",
+          "type": "string"
+        },
+        "databaseConfigurationSecret": {
+          "description": "Database configuration secret used by the deployed instance",
+          "type": "string"
+        },
+        "dbFieldsEncryptionSecret": {
+          "description": "The name of the secret used for encrypting DB fields",
+          "type": "string"
+        },
+        "deployedImage": {
+          "description": "URL of the image used for the deployed instance",
+          "type": "string"
+        },
+        "deployedVersion": {
+          "description": "Version of the deployed instance",
+          "type": "string"
+        },
+        "migrantDatabaseConfigurationSecret": {
+          "description": "The configuration secret used for migrating an old deployment",
+          "type": "string"
+        },
+        "signingSecret": {
+          "description": "Secret where the signing certificates are stored",
+          "type": "string"
+        },
+        "storagePersistentVolumeClaim": {
+          "description": "The name of the persistent volume claim used for storage",
+          "type": "string"
+        },
+        "storageSecret": {
+          "description": "The name of the secret used for object storage",
+          "type": "string"
+        },
+        "storageType": {
+          "description": "The type of storage being used by the deployed instance",
+          "type": "string"
+        },
+        "upgradedFrom": {
+          "description": "Last gated version",
+          "type": "string"
+        },
+        "upgradedPostgresVersion": {
+          "description": "Status to indicate that the database has been upgraded to the version in the status",
+          "type": "string"
+        },
+        "webURL": {
+          "description": "URL to access the deployed instance",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "automationhub.ansible.com",
+      "kind": "AutomationHub",
+      "version": "v1beta1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

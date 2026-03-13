@@ -1,0 +1,66 @@
+{
+  "description": "VirtualMachineInstanceFileSystem represents guest os disk",
+  "type": "object",
+  "required": [
+    "diskName",
+    "mountPoint",
+    "fileSystemType",
+    "usedBytes",
+    "totalBytes"
+  ],
+  "properties": {
+    "disk": {
+      "type": "array",
+      "items": {
+        "description": "VirtualMachineInstanceFileSystemDisk represents the guest os FS disks",
+        "type": "object",
+        "required": [
+          "busType"
+        ],
+        "properties": {
+          "busType": {
+            "type": "string",
+            "default": ""
+          },
+          "serial": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "diskName": {
+      "type": "string",
+      "default": ""
+    },
+    "fileSystemType": {
+      "type": "string",
+      "default": ""
+    },
+    "mountPoint": {
+      "type": "string",
+      "default": ""
+    },
+    "totalBytes": {
+      "type": "integer",
+      "format": "int32",
+      "default": 0
+    },
+    "usedBytes": {
+      "type": "integer",
+      "format": "int32",
+      "default": 0
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

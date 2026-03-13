@@ -5,6 +5,15 @@
     "enabled": {
       "description": "Enabled determines if the feature should be enabled or disabled on the guest. Defaults to true.",
       "type": "boolean"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

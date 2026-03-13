@@ -14,6 +14,15 @@
       "description": "Size of the layer in bytes as defined by the underlying store. This field is optional if the necessary information about size is not available.",
       "type": "integer",
       "format": "int64"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

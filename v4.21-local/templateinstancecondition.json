@@ -28,6 +28,15 @@
     "type": {
       "description": "Type of the condition, currently Ready or InstantiateFailure.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

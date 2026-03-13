@@ -6132,5 +6132,16 @@
     {
       "$ref": "_definitions.json#/definitions/v1.VirtualMachineMemoryDumpRequest"
     }
-  ]
+  ],
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
 }

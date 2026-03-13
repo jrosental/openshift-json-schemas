@@ -20,6 +20,15 @@
     "referencePolicy": {
       "description": "ReferencePolicy defines how other components should consume the image",
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.TagReferencePolicy"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

@@ -35,6 +35,15 @@
     "startTimestamp": {
       "description": "StartTimestamp represents the time the memory dump started",
       "$ref": "_definitions.json#/definitions/k8s.io.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

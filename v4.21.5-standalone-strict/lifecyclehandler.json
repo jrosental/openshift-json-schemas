@@ -59,9 +59,7 @@
         "port": {
           "description": "IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.",
           "type": "string",
-          "format": "int-or-string",
-          "properties": {},
-          "additionalProperties": false
+          "format": "int-or-string"
         },
         "scheme": {
           "description": "Scheme to use for connecting to the host. Defaults to HTTP.\n\nPossible enum values:\n - `\"HTTP\"` means that the scheme used will be http://\n - `\"HTTPS\"` means that the scheme used will be https://",
@@ -103,12 +101,19 @@
         "port": {
           "description": "IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.",
           "type": "string",
-          "format": "int-or-string",
-          "properties": {},
-          "additionalProperties": false
+          "format": "int-or-string"
         }
       },
       "additionalProperties": false
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

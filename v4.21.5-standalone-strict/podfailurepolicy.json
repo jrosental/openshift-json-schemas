@@ -85,6 +85,15 @@
         "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

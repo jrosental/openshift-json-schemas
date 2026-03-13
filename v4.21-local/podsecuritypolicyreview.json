@@ -20,6 +20,9 @@
     "status": {
       "description": "status represents the current information/status for the PodSecurityPolicyReview.",
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicyReviewStatus"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-group-version-kind": [

@@ -9,6 +9,15 @@
     "resourceAttributes": {
       "description": "ResourceAuthorizationAttributes describes information for a resource access request",
       "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.ResourceAttributes"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

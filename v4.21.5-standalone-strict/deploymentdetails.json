@@ -72,6 +72,15 @@
     "message": {
       "description": "Message is the user specified change message, if this deployment was triggered manually by the user",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

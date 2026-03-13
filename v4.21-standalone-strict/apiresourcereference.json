@@ -18,6 +18,12 @@
     "version": {
       "description": "API Version of the referenced resource type.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

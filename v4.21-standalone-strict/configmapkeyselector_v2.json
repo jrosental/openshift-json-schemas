@@ -16,6 +16,15 @@
     "optional": {
       "description": "Specify whether the ConfigMap or its key must be defined",
       "type": "boolean"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-map-type": "atomic",

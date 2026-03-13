@@ -126,6 +126,15 @@
     "zone": {
       "description": "zone is the name of the Zone this endpoint exists in.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

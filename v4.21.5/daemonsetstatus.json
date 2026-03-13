@@ -27,8 +27,7 @@
           "lastTransitionTime": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {}
+            "format": "date-time"
           },
           "message": {
             "description": "A human readable message indicating details about the transition.",
@@ -94,6 +93,15 @@
       "description": "The total number of nodes that are running updated daemon pod",
       "type": "integer",
       "format": "int32"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

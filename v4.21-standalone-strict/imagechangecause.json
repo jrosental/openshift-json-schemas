@@ -41,6 +41,15 @@
     "imageID": {
       "description": "imageID is the ID of the image that triggered a new build.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

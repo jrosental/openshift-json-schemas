@@ -17,6 +17,12 @@
     "name": {
       "description": "Name is the name of resource being referenced",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-map-type": "atomic",

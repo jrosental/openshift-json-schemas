@@ -9,6 +9,15 @@
     "reason": {
       "description": "(brief) reason the container is not yet running.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

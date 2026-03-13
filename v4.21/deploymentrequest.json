@@ -33,6 +33,9 @@
     "name": {
       "description": "Name of the deployment config for requesting a new deployment.",
       "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-group-version-kind": [

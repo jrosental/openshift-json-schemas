@@ -12,9 +12,7 @@
     "completionTimestamp": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "type": "string",
-      "format": "date-time",
-      "properties": {},
-      "additionalProperties": false
+      "format": "date-time"
     },
     "conditions": {
       "description": "Conditions represents the latest available observations of a build's current state.",
@@ -30,16 +28,12 @@
           "lastTransitionTime": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {},
-            "additionalProperties": false
+            "format": "date-time"
           },
           "lastUpdateTime": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {},
-            "additionalProperties": false
+            "format": "date-time"
           },
           "message": {
             "description": "A human readable message indicating details about the transition.",
@@ -161,9 +155,7 @@
           "startTime": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {},
-            "additionalProperties": false
+            "format": "date-time"
           },
           "steps": {
             "description": "steps contains details about each step that occurs during a build stage including start time and duration in milliseconds.",
@@ -184,9 +176,7 @@
                 "startTime": {
                   "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                   "type": "string",
-                  "format": "date-time",
-                  "properties": {},
-                  "additionalProperties": false
+                  "format": "date-time"
                 }
               },
               "additionalProperties": false
@@ -199,9 +189,16 @@
     "startTimestamp": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "type": "string",
-      "format": "date-time",
-      "properties": {},
-      "additionalProperties": false
+      "format": "date-time"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

@@ -20,6 +20,15 @@
       "description": "value contains the amount of change which is permitted by the policy. It must be greater than zero",
       "type": "integer",
       "format": "int32"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

@@ -28,9 +28,7 @@
         "creationTimestamp": {
           "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
           "type": "string",
-          "format": "date-time",
-          "properties": {},
-          "additionalProperties": false
+          "format": "date-time"
         },
         "deletionGracePeriodSeconds": {
           "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -40,9 +38,7 @@
         "deletionTimestamp": {
           "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
           "type": "string",
-          "format": "date-time",
-          "properties": {},
-          "additionalProperties": false
+          "format": "date-time"
         },
         "finalizers": {
           "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -85,9 +81,7 @@
               },
               "fieldsV1": {
                 "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
-                "type": "object",
-                "properties": {},
-                "additionalProperties": false
+                "type": "object"
               },
               "manager": {
                 "description": "Manager is an identifier of the workflow managing these fields.",
@@ -104,9 +98,7 @@
               "time": {
                 "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                 "type": "string",
-                "format": "date-time",
-                "properties": {},
-                "additionalProperties": false
+                "format": "date-time"
               }
             },
             "additionalProperties": false
@@ -483,9 +475,7 @@
                   },
                   "dockerImageMetadata": {
                     "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
-                    "type": "object",
-                    "properties": {},
-                    "additionalProperties": false
+                    "type": "object"
                   },
                   "dockerImageMetadataVersion": {
                     "description": "DockerImageMetadataVersion conveys the version of the object, which if empty defaults to \"1.0\"",
@@ -521,9 +511,7 @@
                       "creationTimestamp": {
                         "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                         "type": "string",
-                        "format": "date-time",
-                        "properties": {},
-                        "additionalProperties": false
+                        "format": "date-time"
                       },
                       "deletionGracePeriodSeconds": {
                         "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -533,9 +521,7 @@
                       "deletionTimestamp": {
                         "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                         "type": "string",
-                        "format": "date-time",
-                        "properties": {},
-                        "additionalProperties": false
+                        "format": "date-time"
                       },
                       "finalizers": {
                         "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -578,9 +564,7 @@
                             },
                             "fieldsV1": {
                               "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
-                              "type": "object",
-                              "properties": {},
-                              "additionalProperties": false
+                              "type": "object"
                             },
                             "manager": {
                               "description": "Manager is an identifier of the workflow managing these fields.",
@@ -597,9 +581,7 @@
                             "time": {
                               "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                               "type": "string",
-                              "format": "date-time",
-                              "properties": {},
-                              "additionalProperties": false
+                              "format": "date-time"
                             }
                           },
                           "additionalProperties": false
@@ -701,16 +683,12 @@
                               "lastProbeTime": {
                                 "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                 "type": "string",
-                                "format": "date-time",
-                                "properties": {},
-                                "additionalProperties": false
+                                "format": "date-time"
                               },
                               "lastTransitionTime": {
                                 "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                 "type": "string",
-                                "format": "date-time",
-                                "properties": {},
-                                "additionalProperties": false
+                                "format": "date-time"
                               },
                               "message": {
                                 "description": "Human readable message indicating details about last transition.",
@@ -742,9 +720,7 @@
                         "created": {
                           "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                           "type": "string",
-                          "format": "date-time",
-                          "properties": {},
-                          "additionalProperties": false
+                          "format": "date-time"
                         },
                         "imageIdentity": {
                           "description": "A human readable string representing image's identity. It could be a product name and version, or an image pull spec (e.g. \"registry.access.redhat.com/rhel7/rhel:7.2\").",
@@ -805,9 +781,7 @@
                             "creationTimestamp": {
                               "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                               "type": "string",
-                              "format": "date-time",
-                              "properties": {},
-                              "additionalProperties": false
+                              "format": "date-time"
                             },
                             "deletionGracePeriodSeconds": {
                               "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -817,9 +791,7 @@
                             "deletionTimestamp": {
                               "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                               "type": "string",
-                              "format": "date-time",
-                              "properties": {},
-                              "additionalProperties": false
+                              "format": "date-time"
                             },
                             "finalizers": {
                               "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -862,9 +834,7 @@
                                   },
                                   "fieldsV1": {
                                     "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
-                                    "type": "object",
-                                    "properties": {},
-                                    "additionalProperties": false
+                                    "type": "object"
                                   },
                                   "manager": {
                                     "description": "Manager is an identifier of the workflow managing these fields.",
@@ -881,9 +851,7 @@
                                   "time": {
                                     "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                     "type": "string",
-                                    "format": "date-time",
-                                    "properties": {},
-                                    "additionalProperties": false
+                                    "format": "date-time"
                                   }
                                 },
                                 "additionalProperties": false
@@ -1097,9 +1065,7 @@
                     },
                     "dockerImageMetadata": {
                       "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
-                      "type": "object",
-                      "properties": {},
-                      "additionalProperties": false
+                      "type": "object"
                     },
                     "dockerImageMetadataVersion": {
                       "description": "DockerImageMetadataVersion conveys the version of the object, which if empty defaults to \"1.0\"",
@@ -1135,9 +1101,7 @@
                         "creationTimestamp": {
                           "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                           "type": "string",
-                          "format": "date-time",
-                          "properties": {},
-                          "additionalProperties": false
+                          "format": "date-time"
                         },
                         "deletionGracePeriodSeconds": {
                           "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -1147,9 +1111,7 @@
                         "deletionTimestamp": {
                           "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                           "type": "string",
-                          "format": "date-time",
-                          "properties": {},
-                          "additionalProperties": false
+                          "format": "date-time"
                         },
                         "finalizers": {
                           "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -1192,9 +1154,7 @@
                               },
                               "fieldsV1": {
                                 "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
-                                "type": "object",
-                                "properties": {},
-                                "additionalProperties": false
+                                "type": "object"
                               },
                               "manager": {
                                 "description": "Manager is an identifier of the workflow managing these fields.",
@@ -1211,9 +1171,7 @@
                               "time": {
                                 "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                 "type": "string",
-                                "format": "date-time",
-                                "properties": {},
-                                "additionalProperties": false
+                                "format": "date-time"
                               }
                             },
                             "additionalProperties": false
@@ -1315,16 +1273,12 @@
                                 "lastProbeTime": {
                                   "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                   "type": "string",
-                                  "format": "date-time",
-                                  "properties": {},
-                                  "additionalProperties": false
+                                  "format": "date-time"
                                 },
                                 "lastTransitionTime": {
                                   "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                   "type": "string",
-                                  "format": "date-time",
-                                  "properties": {},
-                                  "additionalProperties": false
+                                  "format": "date-time"
                                 },
                                 "message": {
                                   "description": "Human readable message indicating details about last transition.",
@@ -1356,9 +1310,7 @@
                           "created": {
                             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                             "type": "string",
-                            "format": "date-time",
-                            "properties": {},
-                            "additionalProperties": false
+                            "format": "date-time"
                           },
                           "imageIdentity": {
                             "description": "A human readable string representing image's identity. It could be a product name and version, or an image pull spec (e.g. \"registry.access.redhat.com/rhel7/rhel:7.2\").",
@@ -1419,9 +1371,7 @@
                               "creationTimestamp": {
                                 "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                 "type": "string",
-                                "format": "date-time",
-                                "properties": {},
-                                "additionalProperties": false
+                                "format": "date-time"
                               },
                               "deletionGracePeriodSeconds": {
                                 "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -1431,9 +1381,7 @@
                               "deletionTimestamp": {
                                 "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                 "type": "string",
-                                "format": "date-time",
-                                "properties": {},
-                                "additionalProperties": false
+                                "format": "date-time"
                               },
                               "finalizers": {
                                 "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -1476,9 +1424,7 @@
                                     },
                                     "fieldsV1": {
                                       "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
-                                      "type": "object",
-                                      "properties": {},
-                                      "additionalProperties": false
+                                      "type": "object"
                                     },
                                     "manager": {
                                       "description": "Manager is an identifier of the workflow managing these fields.",
@@ -1495,9 +1441,7 @@
                                     "time": {
                                       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                       "type": "string",
-                                      "format": "date-time",
-                                      "properties": {},
-                                      "additionalProperties": false
+                                      "format": "date-time"
                                     }
                                   },
                                   "additionalProperties": false
@@ -1763,9 +1707,7 @@
                 "creationTimestamp": {
                   "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                   "type": "string",
-                  "format": "date-time",
-                  "properties": {},
-                  "additionalProperties": false
+                  "format": "date-time"
                 },
                 "deletionGracePeriodSeconds": {
                   "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -1775,9 +1717,7 @@
                 "deletionTimestamp": {
                   "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                   "type": "string",
-                  "format": "date-time",
-                  "properties": {},
-                  "additionalProperties": false
+                  "format": "date-time"
                 },
                 "finalizers": {
                   "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -1820,9 +1760,7 @@
                       },
                       "fieldsV1": {
                         "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
-                        "type": "object",
-                        "properties": {},
-                        "additionalProperties": false
+                        "type": "object"
                       },
                       "manager": {
                         "description": "Manager is an identifier of the workflow managing these fields.",
@@ -1839,9 +1777,7 @@
                       "time": {
                         "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                         "type": "string",
-                        "format": "date-time",
-                        "properties": {},
-                        "additionalProperties": false
+                        "format": "date-time"
                       }
                     },
                     "additionalProperties": false
@@ -2090,9 +2026,7 @@
                             "lastTransitionTime": {
                               "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                               "type": "string",
-                              "format": "date-time",
-                              "properties": {},
-                              "additionalProperties": false
+                              "format": "date-time"
                             },
                             "message": {
                               "description": "Message is a human readable description of the details about last transition, complementing reason.",
@@ -2130,9 +2064,7 @@
                             "created": {
                               "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                               "type": "string",
-                              "format": "date-time",
-                              "properties": {},
-                              "additionalProperties": false
+                              "format": "date-time"
                             },
                             "dockerImageReference": {
                               "description": "DockerImageReference is the string that can be used to pull this image",
@@ -2294,9 +2226,7 @@
                       },
                       "dockerImageMetadata": {
                         "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
-                        "type": "object",
-                        "properties": {},
-                        "additionalProperties": false
+                        "type": "object"
                       },
                       "dockerImageMetadataVersion": {
                         "description": "DockerImageMetadataVersion conveys the version of the object, which if empty defaults to \"1.0\"",
@@ -2332,9 +2262,7 @@
                           "creationTimestamp": {
                             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                             "type": "string",
-                            "format": "date-time",
-                            "properties": {},
-                            "additionalProperties": false
+                            "format": "date-time"
                           },
                           "deletionGracePeriodSeconds": {
                             "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -2344,9 +2272,7 @@
                           "deletionTimestamp": {
                             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                             "type": "string",
-                            "format": "date-time",
-                            "properties": {},
-                            "additionalProperties": false
+                            "format": "date-time"
                           },
                           "finalizers": {
                             "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -2389,9 +2315,7 @@
                                 },
                                 "fieldsV1": {
                                   "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
-                                  "type": "object",
-                                  "properties": {},
-                                  "additionalProperties": false
+                                  "type": "object"
                                 },
                                 "manager": {
                                   "description": "Manager is an identifier of the workflow managing these fields.",
@@ -2408,9 +2332,7 @@
                                 "time": {
                                   "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                   "type": "string",
-                                  "format": "date-time",
-                                  "properties": {},
-                                  "additionalProperties": false
+                                  "format": "date-time"
                                 }
                               },
                               "additionalProperties": false
@@ -2512,16 +2434,12 @@
                                   "lastProbeTime": {
                                     "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                     "type": "string",
-                                    "format": "date-time",
-                                    "properties": {},
-                                    "additionalProperties": false
+                                    "format": "date-time"
                                   },
                                   "lastTransitionTime": {
                                     "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                     "type": "string",
-                                    "format": "date-time",
-                                    "properties": {},
-                                    "additionalProperties": false
+                                    "format": "date-time"
                                   },
                                   "message": {
                                     "description": "Human readable message indicating details about last transition.",
@@ -2553,9 +2471,7 @@
                             "created": {
                               "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                               "type": "string",
-                              "format": "date-time",
-                              "properties": {},
-                              "additionalProperties": false
+                              "format": "date-time"
                             },
                             "imageIdentity": {
                               "description": "A human readable string representing image's identity. It could be a product name and version, or an image pull spec (e.g. \"registry.access.redhat.com/rhel7/rhel:7.2\").",
@@ -2616,9 +2532,7 @@
                                 "creationTimestamp": {
                                   "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                   "type": "string",
-                                  "format": "date-time",
-                                  "properties": {},
-                                  "additionalProperties": false
+                                  "format": "date-time"
                                 },
                                 "deletionGracePeriodSeconds": {
                                   "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -2628,9 +2542,7 @@
                                 "deletionTimestamp": {
                                   "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                   "type": "string",
-                                  "format": "date-time",
-                                  "properties": {},
-                                  "additionalProperties": false
+                                  "format": "date-time"
                                 },
                                 "finalizers": {
                                   "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -2673,9 +2585,7 @@
                                       },
                                       "fieldsV1": {
                                         "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
-                                        "type": "object",
-                                        "properties": {},
-                                        "additionalProperties": false
+                                        "type": "object"
                                       },
                                       "manager": {
                                         "description": "Manager is an identifier of the workflow managing these fields.",
@@ -2692,9 +2602,7 @@
                                       "time": {
                                         "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                         "type": "string",
-                                        "format": "date-time",
-                                        "properties": {},
-                                        "additionalProperties": false
+                                        "format": "date-time"
                                       }
                                     },
                                     "additionalProperties": false
@@ -2908,9 +2816,7 @@
                         },
                         "dockerImageMetadata": {
                           "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
-                          "type": "object",
-                          "properties": {},
-                          "additionalProperties": false
+                          "type": "object"
                         },
                         "dockerImageMetadataVersion": {
                           "description": "DockerImageMetadataVersion conveys the version of the object, which if empty defaults to \"1.0\"",
@@ -2946,9 +2852,7 @@
                             "creationTimestamp": {
                               "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                               "type": "string",
-                              "format": "date-time",
-                              "properties": {},
-                              "additionalProperties": false
+                              "format": "date-time"
                             },
                             "deletionGracePeriodSeconds": {
                               "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -2958,9 +2862,7 @@
                             "deletionTimestamp": {
                               "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                               "type": "string",
-                              "format": "date-time",
-                              "properties": {},
-                              "additionalProperties": false
+                              "format": "date-time"
                             },
                             "finalizers": {
                               "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -3003,9 +2905,7 @@
                                   },
                                   "fieldsV1": {
                                     "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
-                                    "type": "object",
-                                    "properties": {},
-                                    "additionalProperties": false
+                                    "type": "object"
                                   },
                                   "manager": {
                                     "description": "Manager is an identifier of the workflow managing these fields.",
@@ -3022,9 +2922,7 @@
                                   "time": {
                                     "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                     "type": "string",
-                                    "format": "date-time",
-                                    "properties": {},
-                                    "additionalProperties": false
+                                    "format": "date-time"
                                   }
                                 },
                                 "additionalProperties": false
@@ -3126,16 +3024,12 @@
                                     "lastProbeTime": {
                                       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                       "type": "string",
-                                      "format": "date-time",
-                                      "properties": {},
-                                      "additionalProperties": false
+                                      "format": "date-time"
                                     },
                                     "lastTransitionTime": {
                                       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                       "type": "string",
-                                      "format": "date-time",
-                                      "properties": {},
-                                      "additionalProperties": false
+                                      "format": "date-time"
                                     },
                                     "message": {
                                       "description": "Human readable message indicating details about last transition.",
@@ -3167,9 +3061,7 @@
                               "created": {
                                 "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                 "type": "string",
-                                "format": "date-time",
-                                "properties": {},
-                                "additionalProperties": false
+                                "format": "date-time"
                               },
                               "imageIdentity": {
                                 "description": "A human readable string representing image's identity. It could be a product name and version, or an image pull spec (e.g. \"registry.access.redhat.com/rhel7/rhel:7.2\").",
@@ -3230,9 +3122,7 @@
                                   "creationTimestamp": {
                                     "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                     "type": "string",
-                                    "format": "date-time",
-                                    "properties": {},
-                                    "additionalProperties": false
+                                    "format": "date-time"
                                   },
                                   "deletionGracePeriodSeconds": {
                                     "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -3242,9 +3132,7 @@
                                   "deletionTimestamp": {
                                     "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                     "type": "string",
-                                    "format": "date-time",
-                                    "properties": {},
-                                    "additionalProperties": false
+                                    "format": "date-time"
                                   },
                                   "finalizers": {
                                     "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -3287,9 +3175,7 @@
                                         },
                                         "fieldsV1": {
                                           "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
-                                          "type": "object",
-                                          "properties": {},
-                                          "additionalProperties": false
+                                          "type": "object"
                                         },
                                         "manager": {
                                           "description": "Manager is an identifier of the workflow managing these fields.",
@@ -3306,9 +3192,7 @@
                                         "time": {
                                           "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                                           "type": "string",
-                                          "format": "date-time",
-                                          "properties": {},
-                                          "additionalProperties": false
+                                          "format": "date-time"
                                         }
                                       },
                                       "additionalProperties": false

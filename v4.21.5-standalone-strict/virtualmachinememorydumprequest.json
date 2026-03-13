@@ -14,9 +14,7 @@
     "endTimestamp": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "type": "string",
-      "format": "date-time",
-      "properties": {},
-      "additionalProperties": false
+      "format": "date-time"
     },
     "fileName": {
       "description": "FileName represents the name of the output file",
@@ -38,9 +36,16 @@
     "startTimestamp": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "type": "string",
-      "format": "date-time",
-      "properties": {},
-      "additionalProperties": false
+      "format": "date-time"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

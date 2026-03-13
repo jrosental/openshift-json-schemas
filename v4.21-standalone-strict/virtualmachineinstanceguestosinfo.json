@@ -32,6 +32,15 @@
     "versionId": {
       "description": "Version ID of the Guest OS",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

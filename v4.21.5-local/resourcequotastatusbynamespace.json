@@ -13,6 +13,15 @@
     "status": {
       "description": "Status indicates how many resources have been consumed by this project",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceQuotaStatus"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

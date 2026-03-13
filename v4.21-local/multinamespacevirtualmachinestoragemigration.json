@@ -1,0 +1,206 @@
+{
+  "description": "VirtualMachineStorageMigration is the Schema for the virtualmachinestoragemigrations API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "MigMigrationSpec defines the desired state of MigMigration",
+      "type": "object",
+      "required": [
+        "multiNamespaceVirtualMachineStorageMigrationPlanRef"
+      ],
+      "properties": {
+        "multiNamespaceVirtualMachineStorageMigrationPlanRef": {
+          "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+          "type": "object",
+          "properties": {
+            "apiVersion": {
+              "description": "API version of the referent.",
+              "type": "string"
+            },
+            "fieldPath": {
+              "description": "If referring to a piece of an object instead of an entire object, this string\nshould contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].\nFor example, if the object reference is to a container within a pod, this would take on a value like:\n\"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered\nthe event) or if no container name is specified \"spec.containers[2]\" (container with\nindex 2 in this pod). This syntax is chosen only to have some well-defined way of\nreferencing a part of an object.",
+              "type": "string"
+            },
+            "kind": {
+              "description": "Kind of the referent.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+              "type": "string"
+            },
+            "name": {
+              "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "Namespace of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+              "type": "string"
+            },
+            "resourceVersion": {
+              "description": "Specific resourceVersion to which this reference is made, if any.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+              "type": "string"
+            },
+            "uid": {
+              "description": "UID of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+              "type": "string"
+            }
+          },
+          "x-kubernetes-map-type": "atomic"
+        }
+      }
+    },
+    "status": {
+      "description": "MultiNamespaceVirtualMachineStorageMigrationStatus defines the observed state of MultiNamespaceVirtualMachineStorageMigration",
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "type": "array",
+          "items": {
+            "description": "Condition\nType - The condition type.\nStatus - The condition status.\nReason - The reason for the condition.\nMessage - The human readable description of the condition.\nDurable - The condition is not un-staged.\nItems - A list of `items` associated with the condition used to replace [] in `Message`.\nstaging - A condition has been explicitly set/updated.",
+            "type": "object",
+            "required": [
+              "category",
+              "lastTransitionTime",
+              "status",
+              "type"
+            ],
+            "properties": {
+              "category": {
+                "type": "string"
+              },
+              "lastTransitionTime": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "message": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "namespaces": {
+          "description": "The status of the migrations in the namespaces.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "cancelledMigrations": {
+                "description": "The cancelled migrations.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "completedMigrations": {
+                "description": "The completed migrations.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "conditions": {
+                "type": "array",
+                "items": {
+                  "description": "Condition\nType - The condition type.\nStatus - The condition status.\nReason - The reason for the condition.\nMessage - The human readable description of the condition.\nDurable - The condition is not un-staged.\nItems - A list of `items` associated with the condition used to replace [] in `Message`.\nstaging - A condition has been explicitly set/updated.",
+                  "type": "object",
+                  "required": [
+                    "category",
+                    "lastTransitionTime",
+                    "status",
+                    "type"
+                  ],
+                  "properties": {
+                    "category": {
+                      "type": "string"
+                    },
+                    "lastTransitionTime": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "errors": {
+                "description": "The errors occurred during the migration.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "name": {
+                "description": "The name of the namespace to migrate.",
+                "type": "string"
+              },
+              "phase": {
+                "description": "The current phase of the migration.",
+                "type": "string"
+              },
+              "runningMigrations": {
+                "description": "The running migrations.",
+                "type": "array",
+                "items": {
+                  "description": "RunningVirtualMachineMigration has the name of the VirtualMachine and the progress of the migration.",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "description": "The name of the VirtualMachine.",
+                      "type": "string"
+                    },
+                    "progress": {
+                      "description": "The progress of the migration.",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "migrations.kubevirt.io",
+      "kind": "MultiNamespaceVirtualMachineStorageMigration",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -22,6 +22,15 @@
         "FileOrCreate",
         "Socket"
       ]
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

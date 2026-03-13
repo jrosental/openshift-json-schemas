@@ -174,8 +174,7 @@
         "targetPort": {
           "description": "IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.",
           "type": "string",
-          "format": "int-or-string",
-          "properties": {}
+          "format": "int-or-string"
         }
       }
     },
@@ -253,6 +252,15 @@
     "wildcardPolicy": {
       "description": "Wildcard policy if any for the route. Currently only 'Subdomain' or 'None' is allowed.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

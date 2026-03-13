@@ -12,6 +12,15 @@
     "source": {
       "description": "Source describes where to find the ResourceClaim.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ClaimSource"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

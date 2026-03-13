@@ -11,12 +11,17 @@
       "type": "array",
       "items": {
         "type": "string"
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     },
     "gracePeriodSeconds": {
       "description": "The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.",
       "type": "integer",
       "format": "int64"
+    },
+    "ignoreStoreReadErrorWithClusterBreakingPotential": {
+      "description": "if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it",
+      "type": "boolean"
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
@@ -33,6 +38,9 @@
     "propagationPolicy": {
       "description": "Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
       "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -102,11 +110,6 @@
       "version": "v1beta2"
     },
     {
-      "group": "apps.openshift.io",
-      "kind": "DeleteOptions",
-      "version": "v1"
-    },
-    {
       "group": "authentication.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
@@ -130,11 +133,6 @@
       "group": "authorization.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1beta1"
-    },
-    {
-      "group": "authorization.openshift.io",
-      "kind": "DeleteOptions",
-      "version": "v1"
     },
     {
       "group": "autoscaling",
@@ -165,11 +163,6 @@
       "group": "batch",
       "kind": "DeleteOptions",
       "version": "v1beta1"
-    },
-    {
-      "group": "build.openshift.io",
-      "kind": "DeleteOptions",
-      "version": "v1"
     },
     {
       "group": "certificates.k8s.io",
@@ -227,9 +220,24 @@
       "version": "v1beta1"
     },
     {
-      "group": "image.openshift.io",
+      "group": "flowcontrol.apiserver.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
+    },
+    {
+      "group": "flowcontrol.apiserver.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1beta1"
+    },
+    {
+      "group": "flowcontrol.apiserver.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1beta2"
+    },
+    {
+      "group": "flowcontrol.apiserver.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1beta3"
     },
     {
       "group": "imagepolicy.k8s.io",
@@ -237,6 +245,11 @@
       "version": "v1alpha1"
     },
     {
+      "group": "internal.apiserver.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1alpha1"
+    },
+    {
       "group": "networking.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
@@ -244,12 +257,27 @@
     {
       "group": "networking.k8s.io",
       "kind": "DeleteOptions",
+      "version": "v1beta1"
+    },
+    {
+      "group": "node.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1"
+    },
+    {
+      "group": "node.k8s.io",
+      "kind": "DeleteOptions",
       "version": "v1alpha1"
     },
     {
-      "group": "networking.k8s.io",
+      "group": "node.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1beta1"
+    },
+    {
+      "group": "oauth.openshift.io",
+      "kind": "DeleteOptions",
+      "version": "v1"
     },
     {
       "group": "policy",
@@ -262,16 +290,6 @@
       "version": "v1beta1"
     },
     {
-      "group": "project.openshift.io",
-      "kind": "DeleteOptions",
-      "version": "v1"
-    },
-    {
-      "group": "quota.openshift.io",
-      "kind": "DeleteOptions",
-      "version": "v1"
-    },
-    {
       "group": "rbac.authorization.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
@@ -285,6 +303,11 @@
       "group": "rbac.authorization.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1beta1"
+    },
+    {
+      "group": "resource.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1"
     },
     {
       "group": "resource.k8s.io",
@@ -302,11 +325,6 @@
       "version": "v1beta2"
     },
     {
-      "group": "route.openshift.io",
-      "kind": "DeleteOptions",
-      "version": "v1"
-    },
-    {
       "group": "scheduling.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
@@ -320,11 +338,6 @@
       "group": "scheduling.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1beta1"
-    },
-    {
-      "group": "security.openshift.io",
-      "kind": "DeleteOptions",
-      "version": "v1"
     },
     {
       "group": "storage.k8s.io",
@@ -342,7 +355,12 @@
       "version": "v1beta1"
     },
     {
-      "group": "template.openshift.io",
+      "group": "storagemigration.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1alpha1"
+    },
+    {
+      "group": "user.openshift.io",
       "kind": "DeleteOptions",
       "version": "v1"
     }

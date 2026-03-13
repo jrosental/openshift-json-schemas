@@ -30,6 +30,15 @@
     "signerName": {
       "description": "Kubelet's generated CSRs will be addressed to this signer.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

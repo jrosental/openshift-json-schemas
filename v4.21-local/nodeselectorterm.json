@@ -17,6 +17,15 @@
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
       },
       "x-kubernetes-list-type": "atomic"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-map-type": "atomic",

@@ -17,6 +17,9 @@
     "uid": {
       "description": "UID of the referent.",
       "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

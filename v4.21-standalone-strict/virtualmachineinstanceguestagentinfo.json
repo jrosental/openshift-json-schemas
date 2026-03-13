@@ -180,6 +180,9 @@
         },
         "additionalProperties": false
       }
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

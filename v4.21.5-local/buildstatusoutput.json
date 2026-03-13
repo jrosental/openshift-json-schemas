@@ -5,6 +5,15 @@
     "to": {
       "description": "to describes the status of the built image being pushed to a registry.",
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildStatusOutputTo"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

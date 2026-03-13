@@ -12,6 +12,12 @@
     "spec": {
       "description": "Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.resource.v1.ResourceClaimSpec"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
     }
   },
   "$schema": "http://json-schema.org/schema#"

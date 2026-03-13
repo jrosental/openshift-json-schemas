@@ -25,8 +25,7 @@
           "lastTransitionTime": {
             "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
             "type": "string",
-            "format": "date-time",
-            "properties": {}
+            "format": "date-time"
           },
           "message": {
             "description": "message is a human readable message indicating details about the transition. This may be an empty string.",
@@ -74,8 +73,7 @@
       "additionalProperties": {
         "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
         "type": "string",
-        "format": "date-time",
-        "properties": {}
+        "format": "date-time"
       }
     },
     "disruptionsAllowed": {
@@ -92,6 +90,15 @@
       "description": "Most recent generation observed when updating this PDB status. DisruptionsAllowed and other status information is valid only if observedGeneration equals to PDB's object generation.",
       "type": "integer",
       "format": "int64"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

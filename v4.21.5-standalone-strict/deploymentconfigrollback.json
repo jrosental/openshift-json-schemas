@@ -95,6 +95,9 @@
       "additionalProperties": {
         "type": "string"
       }
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-group-version-kind": [

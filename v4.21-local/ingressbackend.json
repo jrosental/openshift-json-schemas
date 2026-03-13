@@ -9,6 +9,15 @@
     "service": {
       "description": "service references a service as a backend. This is a mutually exclusive setting with \"Resource\".",
       "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.IngressServiceBackend"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

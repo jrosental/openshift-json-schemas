@@ -12,6 +12,15 @@
     "resourceID": {
       "description": "ResourceID is the unique identifier of the resource. See the ResourceID type for more information.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

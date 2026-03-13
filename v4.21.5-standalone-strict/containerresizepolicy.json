@@ -13,6 +13,15 @@
     "restartPolicy": {
       "description": "Restart policy to apply when specified resource is resized. If not specified, it defaults to NotRequired.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

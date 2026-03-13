@@ -13,6 +13,15 @@
     "type": {
       "description": "Specifies the required Pod condition type. To match a pod condition it is required that specified type equals the pod condition type.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

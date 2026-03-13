@@ -55,6 +55,9 @@
     "verb": {
       "description": "Verb is one of: get, list, watch, create, update, delete",
       "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "x-kubernetes-group-version-kind": [

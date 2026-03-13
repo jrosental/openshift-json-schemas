@@ -57,6 +57,15 @@
       "description": "UpdatedReplicas is the total number of non-terminated pods targeted by this deployment config that have the desired template spec.",
       "type": "integer",
       "format": "int32"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

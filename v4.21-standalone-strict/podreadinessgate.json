@@ -8,6 +8,15 @@
     "conditionType": {
       "description": "ConditionType refers to a condition in the pod's condition list with matching type.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,

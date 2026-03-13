@@ -20,6 +20,15 @@
     "templateInstance": {
       "description": "templateinstance is a reference to a TemplateInstance object residing in a namespace.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/schema#"

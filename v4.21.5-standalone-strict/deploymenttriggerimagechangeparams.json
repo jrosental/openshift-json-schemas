@@ -55,6 +55,15 @@
     "lastTriggeredImage": {
       "description": "LastTriggeredImage is the last image to be triggered.",
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
     }
   },
   "additionalProperties": false,
